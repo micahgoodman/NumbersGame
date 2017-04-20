@@ -28,7 +28,7 @@
             <string>clicked = 0;
 landed = false;
 
-speed = global.PER_SECOND * 450;
+speed = global.PER_SECOND * 500;
 
 landed_object = o_NumberSpawner;
 
@@ -58,7 +58,7 @@ shooed_direction = point_direction(x, y, random_range(view_xview, view_xview+vie
             <kind>1</kind>
             <string>if shooed == false
 {
-direction = point_direction(x, y, random_range(view_xview, view_xview+view_wview), view_yview+view_hview);
+direction = point_direction(x, y, random_range(view_xview+view_wview-40, view_xview+view_wview+60), view_yview+view_hview);
 }
 
 /*var i;

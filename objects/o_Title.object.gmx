@@ -53,15 +53,18 @@ draw_set_valign(fa_middle);
 draw_set_color(make_color_rgb(47, 22, 15));
 
 draw_set_font(f_Title);
-draw_text(x, y-150, "Mental  Dam");
+draw_text(x, y-150, "Numberjack");
 
 draw_set_color(c_black);
 
 draw_set_font(f_Play);
-draw_text(x, y-50, "Press &lt;Space&gt; to continue");
+draw_text(x, y-15, "Press &lt;Space&gt; to continue");
+
+draw_set_font(f_Controls);
+draw_text(x, y+45, "High Score: " + string(HIGH_SCORE));
 
 draw_set_font(f_Info);
-draw_text(x, y+60, "&lt;C&gt; for Controls#&lt;S&gt; for heart-wrenching backstory");
+draw_text(x, y+105, "&lt;C&gt; for Controls#&lt;S&gt; for heart-wrenching backstory");
 
 draw_set_font(f_Music);
 draw_text(x, view_yview+view_hview-30, "Music by Shake That Little Foot");

@@ -8,6 +8,10 @@
     <sound>sound\so_Correct</sound>
     <sound>sound\so_Incorrect</sound>
     <sound>sound\so_Soundtrack1</sound>
+    <sound>sound\so_Free</sound>
+    <sound>sound\so_MoreTime</sound>
+    <sound>sound\so_SlowDown</sound>
+    <sound>sound\so_SpeedUp</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_Number</sprite>
@@ -32,8 +36,8 @@
     <sprite>sprites\sp_Eight</sprite>
     <sprite>sprites\sp_EightSelected</sprite>
     <sprite>sprites\sp_Nine</sprite>
-    <sprite>sprites\sp_Free</sprite>
     <sprite>sprites\sp_NineSelected</sprite>
+    <sprite>sprites\sp_Free</sprite>
     <sprite>sprites\sp_Addition</sprite>
     <sprite>sprites\sp_Subtraction</sprite>
     <sprite>sprites\sp_Multiplication</sprite>
@@ -52,6 +56,10 @@
     <sprite>sprites\sp_Hint</sprite>
     <sprite>sprites\sp_Coffee</sprite>
     <sprite>sprites\sp_Damway</sprite>
+    <sprite>sprites\sp_StoreBox</sprite>
+    <sprite>sprites\sp_LevelsButton</sprite>
+    <sprite>sprites\sp_Shadow</sprite>
+    <sprite>sprites\sp_PopUp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\b_Green</background>
@@ -65,8 +73,10 @@
     <font>fonts\f_Play</font>
     <font>fonts\f_Numbers</font>
     <font>fonts\f_Target</font>
+    <font>fonts\f_GameOver</font>
     <font>fonts\f_Message</font>
     <font>fonts\f_Music</font>
+    <font>fonts\f_Buttons</font>
   </fonts>
   <objects name="objects">
     <object>objects\o_NumberSpawner</object>
@@ -110,11 +120,19 @@
     <object>objects\o_Free</object>
     <object>objects\o_BackStory</object>
     <object>objects\o_BuyPlug</object>
+    <object>objects\o_BuyPlugBox</object>
     <object>objects\o_BuyHint</object>
     <object>objects\o_BuyCoffee</object>
     <object>objects\o_BuyDamway</object>
     <object>objects\o_Plug</object>
     <object>objects\o_Hint</object>
+    <object>objects\o_WrongShake</object>
+    <object>objects\o_LevelsButton</object>
+    <object>objects\o_Equation</object>
+    <object>objects\o_Shadow</object>
+    <object>objects\o_PopUp</object>
+    <object>objects\o_Continue</object>
+    <object>objects\o_Exit</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_Title</room>

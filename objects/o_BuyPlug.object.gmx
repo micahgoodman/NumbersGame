@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if score &gt;= 2500
+            <string>if LUMBER &gt;= 50
 {
-score -= 2500;
+LUMBER -= 50;
 global.PLUGS += 1;
 }
 </string>
@@ -58,7 +58,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Controls);
 draw_set_color(c_black);
-draw_text(x, y+65, "Drain Plug#Cost: 2500 Lumber#Get rid of a#whirlpool.");
+draw_text(x, y+65, "Drain Plug#Cost: 50 Lumber#Get rid of a#whirlpool.");
 
 draw_set_font(f_Music);
 draw_text(x+33, y+5, "x" + string(global.PLUGS));

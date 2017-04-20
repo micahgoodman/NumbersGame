@@ -90,6 +90,22 @@ if countdown&lt;=0 &amp;&amp; instance_exists(o_GameOver)==false
 {
 switch_room = true;
 instance_create(view_xview+(view_wview/2), view_yview+(view_hview/3), o_GameOver);
+part_type_destroy(o_Control.particle1);
+part_emitter_destroy(o_Control.system1, o_Control.emitter1);
+part_system_destroy(o_Control.system1);
+
+if instance_exists(o_MoreTime)
+{
+    part_type_destroy(o_MoreTime.particle1);
+    part_emitter_destroy(o_MoreTime.system1, o_MoreTime.emitter1);
+    part_system_destroy(o_MoreTime.system1);
+}
+if instance_exists(o_Free)
+{
+    part_type_destroy(o_Free.particle1);
+    part_emitter_destroy(o_Free.system1, o_Free.emitter1);
+    part_system_destroy(o_Free.system1);
+}
 }
 
 if switch_room == true

@@ -29,7 +29,7 @@
 draw_set_valign(fa_middle);
 draw_set_color(c_black);
 draw_set_font(f_Info);
-draw_text(view_xview+(view_wview/2), y, "Lumber: " + string(score));
+draw_text(view_xview+(view_wview/2), y, "Lumber: " + string(LUMBER));
 </string>
           </argument>
         </arguments>

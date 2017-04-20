@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2</depth>
+  <depth>4</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>score = 0;
+            <string>system1 = part_system_create();
+particle1 = part_type_create();
+part_type_shape(particle1,pt_shape_disk);
+part_type_size(particle1,0.10,0.10,0,0);
+part_type_scale(particle1,1,1);
+part_type_color2(particle1,16711680,65280);
+part_type_alpha1(particle1,1);
+part_type_speed(particle1,1,1,0,0);
+part_type_direction(particle1,0,359,0,0);
+part_type_gravity(particle1,0,270);
+part_type_orientation(particle1,0,0,0,0,1);
+part_type_blend(particle1,0);
+part_type_life(particle1,15,30);
+emitter1 = part_emitter_create(system1);
+//part_emitter_region(system1,emitter1,view_xview+100,view_xview+100,view_yview+100,view_yview+100,ps_shape_ellipse,1);
+//part_emitter_stream(system1,emitter1,particle1,75);
+
+reached = false;
+done = false;
 </string>
           </argument>
         </arguments>
@@ -48,7 +66,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(so_Incorrect, 1, 0);
+            <string>o_Hint.hint = 0;
+global.FIRST = 0;
+global.SECOND = 0;
+
+score -= 25;
+
+instance_create(x, y, o_WrongShake);
+
+audio_play_sound(so_Incorrect, 1, 0);
 var i;
 for (i=0; i&lt;array_length_1d(global.NUM_OBJECTS); i++)
 {
@@ -57,6 +83,21 @@ if instance_exists(global.NUM_OBJECTS[i])
     global.NUM_OBJECTS[i].used = false;
     }
 }
+
+done = true;
+reached = false;
+
+
+var i
+for (i=0; i&lt;instance_number(o_Number); i++)
+{
+if instance_find(o_Number, i).y &lt;= view_yview+(view_hview/2)-16
+{
+with (instance_find(o_Number, i)) instance_destroy();
+}
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -79,7 +120,22 @@ if instance_exists(global.NUM_OBJECTS[i])
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with o_Target
+            <string>o_Hint.hint = 0;
+global.FIRST = 0;
+global.SECOND = 0;
+
+if global.LEVEL=="addition1" || global.LEVEL=="subtraction1" || global.LEVEL=="multiplication1" || global.LEVEL=="division1"
+{
+LUMBER += global.TARGET+(5*global.DAMWAY);
+score += 100;
+}
+else if global.LEVEL=="addition2" || global.LEVEL=="subtraction2" || global.LEVEL=="multiplication2" || global.LEVEL=="division2"
+{
+LUMBER += global.TARGET+(5*global.DAMWAY);
+score += 150;
+}
+
+with o_Target
     {
     instance_destroy();
     }
@@ -105,6 +161,43 @@ for (i=0; i&lt;array_length_1d(global.NUM_OBJECTS); i++)
     }
     
 o_NumberSpawner.alarm[0] = 1;
+
+done = true;
+reached = false;
+
+
+var i
+for (i=0; i&lt;instance_number(o_Number); i++)
+{
+if instance_find(o_Number, i).y &lt;= view_yview+(view_hview/2)-16
+{
+with (instance_find(o_Number, i)) instance_destroy();
+}
+}
+
+with (FIRST_NUM)
+{
+//instance_destroy();
+}
+FIRST_NUM = o_Number;
+with (SECOND_NUM)
+{
+//instance_destroy();
+}
+SECOND_NUM = o_Number;
+
+part_emitter_region(system1,emitter1,view_xview+100,view_xview+100,view_yview+100,view_yview+100,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 75);
+part_emitter_region(system1,emitter1,view_xview+view_wview-150,view_xview+view_wview-150,view_yview+200,view_yview+200,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 75);
+part_emitter_region(system1,emitter1,view_xview+view_wview-300,view_xview+view_wview-300,view_yview+230,view_yview+230,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 75);
+part_emitter_region(system1,emitter1,view_xview+10,view_xview+10,view_yview+240,view_yview+240,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 75);
+part_emitter_region(system1,emitter1,view_xview+320,view_xview+320,view_yview+15,view_yview+15,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 75);
+part_emitter_region(system1,emitter1,view_xview+view_wview-10,view_xview+view_wview-10,view_yview+25,view_yview+25,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 75);
 </string>
           </argument>
         </arguments>
@@ -131,24 +224,39 @@ o_NumberSpawner.alarm[0] = 1;
 {
 if global.LEVEL=="addition1" || global.LEVEL=="addition2"
 {
-    if global.FIRST+global.SECOND == global.TARGET
+    if global.FIRST+global.SECOND==global.TARGET &amp;&amp; global.SECOND!=0
     {
-    score += 1000;
-
-    global.FIRST = 0;
-    global.SECOND = 0;
+    //alarm[0] = room_speed*(1.25-.75*global.COFFEE);
     
-    alarm[0] = room_speed*1.25;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[0] = room_speed/4;
+        reached = true;
+        }
     
-    instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
+    //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST+global.SECOND != global.TARGET
     {
-    score -= 250;
-    global.FIRST = 0;
-    global.SECOND = 0;
-    alarm[1] = room_speed*1.25;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[1] = room_speed/4;
+        reached = true;
+        }
+    //alarm[1] = room_speed*(1.25-.75*global.COFFEE);
     }
 }
 
@@ -158,21 +266,34 @@ if global.LEVEL == "subtraction1" || global.LEVEL=="subtraction2"
 {
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST-global.SECOND==global.TARGET
     {
-    score += 1000;
-    global.FIRST = 0;
-    global.SECOND = 0;
-        
-    alarm[0] = room_speed*1.25;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[0] = room_speed/4;
+        reached = true;
+        }
     
-    instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
+    //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST-global.SECOND != global.TARGET
     {
-    score -= 250;
-    alarm[1] = room_speed*1.25;
-    global.FIRST = 0;
-    global.SECOND = 0;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[1] = room_speed/4;
+        reached = true;
+        }
     }
 }
 
@@ -182,21 +303,34 @@ if global.LEVEL == "multiplication1" || global.LEVEL=="multiplication2"
 {
     if global.FIRST*global.SECOND == global.TARGET
     {
-    score += 1000;
-    global.FIRST = 0;
-    global.SECOND = 0;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[0] = room_speed/4;
+        reached = true;
+        }
     
-    alarm[0] = room_speed*1.25;
-    
-    instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
+    //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST*global.SECOND != global.TARGET
     {
-    score -= 250;
-    alarm[1] = room_speed*1.25;
-    global.FIRST = 0;
-    global.SECOND = 0;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[1] = room_speed/4;
+        reached = true;
+        }
     }
 }
 
@@ -206,24 +340,60 @@ if global.LEVEL == "division1" || global.LEVEL=="division2"
 {
     if global.FIRST/global.SECOND == global.TARGET
     {
-    score += 1000;
-    global.FIRST = 0;
-    global.SECOND = 0;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[0] = room_speed/4;
+        reached = true;
+        }
     
-    alarm[0] = room_speed*1.25;
-    
-    instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
+    //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST/global.SECOND!=global.TARGET
     {
-    score -= 250;
-    alarm[1] = room_speed*1.25;
-    global.FIRST = 0;
-    global.SECOND = 0;
+        if reached == true
+        {
+        o_Hint.hint = 0;
+        global.FIRST = 0;
+        global.SECOND = 0;
+        }
+        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        {
+        alarm[1] = room_speed/4;
+        reached = true;
+        }
     }
 }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//global.PER_SECOND /= 2;
 </string>
           </argument>
         </arguments>
@@ -249,15 +419,44 @@ if global.LEVEL == "division1" || global.LEVEL=="division2"
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-draw_set_color(c_blue);
+draw_set_color(make_color_rgb(91, 106, 242));
 draw_rectangle(view_xview, view_yview+(view_hview/2), view_xview+view_wview, view_yview+view_hview, false);
 
-draw_set_color(make_color_rgb(135, 206, 250));
+draw_set_color(make_color_rgb(167, 213, 242));
 draw_rectangle(view_xview, view_yview, view_xview+view_wview, view_yview+(view_hview/4), false);
 
+draw_set_halign(fa_right);
+draw_set_valign(fa_top);
 draw_set_color(c_black);
 draw_set_font(f_Info);
-draw_text(view_xview+view_wview-100, view_yview+30, "Lumber: " + string(score));
+draw_text(view_xview+view_wview-10, view_yview+7, "Lumber: " + string(LUMBER));
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_text(view_xview+10, view_yview+7, "Score: " + string(score));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="16">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//global.PER_SECOND *= 2;
 </string>
           </argument>
         </arguments>

@@ -85,16 +85,16 @@ if x == view_xview-50
 instance_destroy();
 }
 
-if y &lt;= view_yview+(view_hview/2)-20
+if y &lt;= NUM_Y
 {
 speed = 0;
 direction = 90;
 }
 
-if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; used==true
+/*if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; used==true
 {
 alarm[0] = room_speed*1.25;
-}
+}*/
 
 if !instance_exists(o_Bird)
 {
@@ -127,18 +127,20 @@ landed_on = false;
     if global.FIRST == 0
     {
     sprite_index = sp_NineSelected;
-    speed = global.PER_SECOND * 300;
-    direction = point_direction(x, y, view_xview+(view_wview/2)-57, view_yview+(view_hview/2)-20);
+    speed = global.PER_SECOND*(300+(150*global.COFFEE));
+    direction = point_direction(x, y, view_xview+(view_wview/2)-57, NUM_Y);
     global.FIRST = 9;
     used = true;
+    FIRST_NUM = self;
     }
     else if global.SECOND==0 &amp;&amp; used==false
     {
     sprite_index = sp_NineSelected;
-    speed = global.PER_SECOND * 300;
-    direction = point_direction(x, y, view_xview+(view_wview/2)+57, view_yview+(view_hview/2)-20);
+    speed = global.PER_SECOND*(300+(150*global.COFFEE));
+    direction = point_direction(x, y, view_xview+(view_wview/2)+57, NUM_Y);
     global.SECOND = 9;
     used = true;
+    SECOND_NUM = self;
     }
 }
 </string>
@@ -175,7 +177,8 @@ draw_set_color(c_white);
 }
 else
 {
-draw_set_color(make_color_rgb(200, 200, 200));
+draw_set_color(c_white);
+//draw_set_color(make_color_rgb(200, 200, 200));
 }
 
 draw_text(x, y, "9");

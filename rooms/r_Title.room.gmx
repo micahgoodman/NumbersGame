@@ -11,12 +11,24 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>global.PER_SECOND = delta_time/1000000;
-global.SPD = 100;
 
-global.PLUGS = 0;
-global.HINTS = 0;
-global.COFFEE = 0;
-global.DAMWAY = 0;</code>
+globalvar FIRST_NUM; FIRST_NUM = o_Number;
+globalvar SECOND_NUM; SECOND_NUM = o_Number;
+
+globalvar LUMBER;
+globalvar HIGH_SCORE;
+
+globalvar NUM_Y; NUM_Y = view_yview+(view_hview/2)-30;
+
+ini_open("info.ini");
+global.PLUGS = ini_read_real("Plugs", "0", 0);
+global.HINTS = ini_read_real("Hints", "0", 0);
+global.COFFEE = ini_read_real("Coffee", "0", 0);
+global.DAMWAY = ini_read_real("Damway", "0", 0);
+//score = ini_read_real("Score", "0", 0);
+HIGH_SCORE = ini_read_real("HighScore", "0", 0);
+LUMBER = ini_read_real("Lumber", "0", 0);
+ini_close();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>0</clearDisplayBuffer>

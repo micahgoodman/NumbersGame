@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.PER_SECOND = delta_time/1000000;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,11 +49,81 @@
           <argument>
             <kind>1</kind>
             <string>draw_set_halign(fa_left);
-draw_set_valign(fa_middle);
+draw_set_valign(fa_bottom);
 draw_set_color(c_black);
 draw_set_font(f_Music);
-draw_text(x, y, "Hi! I'm Earl the Elderly Beaver.");
 
+if o_Beaver.x &lt; 100
+{
+draw_text(50, view_yview+view_hview-200, "Hi! My name's Bucktooth.#Walk with me and I'll tell you my story.");
+}
+if o_Beaver.x&gt;225 &amp;&amp; o_Beaver.x&lt;500
+{
+draw_text(225, view_yview+view_hview-200, "I don't have a home right now.#This is where it used to be.");
+}
+if o_Beaver.x&gt;525 &amp;&amp; o_Beaver.x&lt;800
+{
+draw_text(525, view_yview+view_hview-200, "I lost it in a bet.");
+}
+if o_Beaver.x&gt;825 &amp;&amp; o_Beaver.x&lt;1100
+{
+draw_text(825, view_yview+view_hview-200, "You see, I was a champion tree chomper.#Back before Clenchjaw scammed me.#Back when I had teeth.");
+}
+if o_Beaver.x&gt;1125 &amp;&amp; o_Beaver.x&lt;1400
+{
+draw_text(1125, view_yview+view_hview-200, "I could bite down trees like#bears bite through salmon.#One chomp and it toppled.");
+}
+if o_Beaver.x&gt;1425 &amp;&amp; o_Beaver.x&lt;1700
+{
+draw_text(1425, view_yview+view_hview-200, "I travelled to rivers all over,#helping beavers collect wood.");
+}
+if o_Beaver.x&gt;1725 &amp;&amp; o_Beaver.x&lt;2000
+{
+draw_text(1725, view_yview+view_hview-200, "If they were old, or had bad teeth,#or were disabled, I'd chomp some trees#down so they'd have wood for their homes.");
+}
+if o_Beaver.x&gt;2025 &amp;&amp; o_Beaver.x&lt;2300
+{
+draw_text(2025, view_yview+view_hview-200, "It felt so good to help.#And the community had never been stronger!");
+}
+if o_Beaver.x&gt;2325 &amp;&amp; o_Beaver.x&lt;2600
+{
+draw_text(2325, view_yview+view_hview-200, "But that didn't matter to Clenchjaw.");
+}
+if o_Beaver.x&gt;2625 &amp;&amp; o_Beaver.x&lt;2900
+{
+draw_text(2625, view_yview+view_hview-200, "The only thing that mattered to#him was that people weren't renting#as much lumber. That he wasn't#making as much money.");
+}
+if o_Beaver.x&gt;2925 &amp;&amp; o_Beaver.x&lt;3200
+{
+draw_text(2925, view_yview+view_hview-200, "So he offered me a deal.#If I could fell more trees than#his team of workers, he'd donate#all of his wood to the community.");
+}
+if o_Beaver.x&gt;3225 &amp;&amp; o_Beaver.x&lt;3500
+{
+draw_text(3225, view_yview+view_hview-200, "If I couldn't, then I had to start#working for him...and give up my house...#for some cruel reason.");
+}
+if o_Beaver.x&gt;3525 &amp;&amp; o_Beaver.x&lt;3800
+{
+draw_text(3525, view_yview+view_hview-200, "I accepted immediately.#I should have known he was up to something.");
+}
+if o_Beaver.x&gt;3825 &amp;&amp; o_Beaver.x&lt;4100
+{
+draw_text(3825, view_yview+view_hview-200, "The second I bit into my first tree,#my teeth shattered. He had disguised#some rocks as a pine. The contest#ended then and there.");
+}
+if o_Beaver.x&gt;4125 &amp;&amp; o_Beaver.x&lt;4400
+{
+draw_text(4125, view_yview+view_hview-200, "But it's not over.#I'm going to take down Clenchjaw after all,#I just need your some assistance this time.");
+}
+if o_Beaver.x&gt;4425 &amp;&amp; o_Beaver.x&lt;4700
+{
+draw_text(4425, view_yview+view_hview-200, "Help me collect lumber, so that our#ecosystem no longer has to#put up with Clenchjaw's extortion.");
+}
+if o_Beaver.x&gt;4725 &amp;&amp; o_Beaver.x&lt;5000
+{
+draw_text(4725, view_yview+view_hview-200, "Let's go!");
+}
+
+
+/*
 draw_set_halign(fa_right);
 draw_text(x+520, y+75, "After my dear wife passed away, my dam got foreclosed on.#It's been in my family for generations!#How was I supposed to know I had to pay property taxes?");
 
@@ -38,7 +131,7 @@ draw_set_halign(fa_left);
 draw_text(x-50, y+170, "I don't have my teeth anymore,#so I can't go chomping down trees.");
 
 draw_set_halign(fa_right);
-draw_text(x+520, y+250, "My children never visit.#You're my only hope.#Please help me collect lumber for my dam!");
+draw_text(x+520, y+250, "My children never visit.#You're my only hope.#Please help me collect lumber for my dam!");*/
 </string>
           </argument>
         </arguments>

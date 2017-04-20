@@ -10,7 +10,15 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>ini_open("info.ini");
+if (score &gt; HIGH_SCORE) ini_write_real("HighScore", "0", score);
+ini_write_real("Plugs", "0", global.PLUGS);
+ini_write_real("Hints", "0", global.HINTS);
+ini_write_real("Coffee", "0", global.COFFEE);
+ini_write_real("Damway", "0", global.DAMWAY);
+ini_write_real("Lumber", "0", LUMBER);
+//ini_write_real("Score", "0", score);
+ini_close();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

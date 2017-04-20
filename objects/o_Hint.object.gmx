@@ -27,6 +27,108 @@
             <kind>1</kind>
             <string>image_xscale /= 2;
 image_yscale /= 2;
+
+hint = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if global.SECOND == 1
+{
+show_debug_message("hello");
+hint = 0;
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if global.HINTS&gt;0 &amp;&amp; global.SECOND==0
+{
+global.HINTS -= 1;
+if global.LEVEL=="addition1" || global.LEVEL=="addition2"
+    {
+    if global.FIRST == 0
+        {
+        while hint&lt;1 || hint&gt;9
+            {
+            hint = global.TARGET-round(random_range(1, 9));
+            }
+        }
+    else
+        {
+        hint = global.TARGET-global.FIRST;
+        }
+    }
+if global.LEVEL=="subtaction1" || global.LEVEL=="subtraction2"
+    {
+    if global.FIRST == 0
+        {
+        hint = global.TARGET+random_range(1, 9);
+        }
+    else
+        {
+        hint = global.TARGET+global.FIRST;
+        }
+    }
+if global.LEVEL=="multiplication1" || global.LEVEL=="multiplication2"
+    {
+    if global.FIRST == 0
+        {
+        hint = global.TARGET/random_range(1, 9);
+        }
+    else
+        {
+        hint = global.TARGET/global.FIRST;
+        }
+    }
+if global.LEVEL=="division1" || global.LEVEL=="division2"
+    {
+    if global.FIRST == 0
+        {
+        hint = global.TARGET*random_range(1, 9);
+        }
+    else
+        {
+        hint = global.TARGET*global.FIRST;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -55,8 +157,15 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_set_color(c_black);
 draw_set_font(f_Music);
-
 draw_text(x+11, y, "x" + string(global.HINTS));
+
+if hint != 0
+{
+draw_set_font(f_Numbers);
+draw_set_alpha(.75);
+draw_text(350, 200, string(hint));
+draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

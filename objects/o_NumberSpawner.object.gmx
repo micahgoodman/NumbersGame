@@ -41,6 +41,32 @@ numbers[8] = o_Nine;
 
 alarm[0] = 1;
 alarm[1] = 1;
+alarm[2] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(view_xview+view_wview+50, random_range(view_yview+(view_hview/2)+110, view_yview+view_hview-20), numbers[random(9)]);
+alarm[2] = room_speed/random_range(1.5, 2.5);
+
 </string>
           </argument>
         </arguments>
@@ -63,8 +89,8 @@ alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+50, random_range(view_yview+(view_hview/2)+1, view_yview+view_hview-20), numbers[random(9)]);
-alarm[1] = room_speed/(random_range(.65, 3));
+            <string>instance_create(view_xview+view_wview+50, random_range(view_yview+(view_hview/2)+1, view_yview+(view_hview/2)+90), numbers[random(9)]);
+alarm[1] = room_speed/random_range(1.5, 2.5);
 </string>
           </argument>
         </arguments>
@@ -104,13 +130,16 @@ while second_adder == first_adder
 second_adder = global.NUMS[random_range(0, 5)]+1;
 }
 
+
 if global.LEVEL=="addition1" || global.LEVEL=="addition2"
 {
-global.TARGET = round(first_adder) + round(second_adder);
+global.TARGET = round(random_range(2, 18.49));
+//global.TARGET = round(first_adder) + round(second_adder);
 }
 else if global.LEVEL == "subtraction1" || global.LEVEL=="subtraction2"
 {
-global.TARGET = round(first_adder) - round(second_adder);
+global.TARGET = round(random_range(8, -8));
+//global.TARGET = round(first_adder) - round(second_adder);
 }
 else if global.LEVEL == "multiplication1" || global.LEVEL=="multiplication2"
 {
@@ -118,7 +147,8 @@ global.TARGET = round(first_adder) * round(second_adder);
 }
 else if global.LEVEL == "division1" || global.LEVEL=="division2"
 {
-global.TARGET = round(first_adder) / round(second_adder);
+global.TARGET = round(random_range(1, 9.49));
+//global.TARGET = round(first_adder) / round(second_adder);
 }
 
 var i;
@@ -146,7 +176,7 @@ if add_up == false
 global.NUMS[array_length_1d(global.NUMS)] = global.TARGET - global.NUMS[random(array_length_1d(global.NUMS))];
 }*/
 
-instance_create((view_xview+view_wview)/2, (view_yview+view_hview)/4, o_Target);
+instance_create((view_xview+view_wview)/2, (view_yview+view_hview)/4-10, o_Target);
 
 
 /*instance_create(random_range((view_xview+view_wview)/5+45, (view_xview+view_wview)*(2/5)-45), view_yview+(view_hview*(2/3)), numbers[global.NUMS[1]]);
@@ -233,7 +263,9 @@ alarm[0] = 1;*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_BackStory);
+            <string>//room_goto(r_BackStory);
+
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/2), o_PopUp);
 </string>
           </argument>
         </arguments>
@@ -256,7 +288,9 @@ alarm[0] = 1;*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_Title);
+            <string>//room_goto(r_Title);
+
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/2), o_PopUp);
 </string>
           </argument>
         </arguments>
@@ -279,7 +313,9 @@ alarm[0] = 1;*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_Levels);
+            <string>//room_goto(r_Levels);
+
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/2), o_PopUp);
 </string>
           </argument>
         </arguments>
@@ -302,7 +338,9 @@ alarm[0] = 1;*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_GeneralStore);
+            <string>//room_goto(r_GeneralStore);
+
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/2), o_PopUp);
 </string>
           </argument>
         </arguments>
@@ -325,7 +363,9 @@ alarm[0] = 1;*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_Controls);
+            <string>//room_goto(r_Controls);
+
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/2), o_PopUp);
 </string>
           </argument>
         </arguments>

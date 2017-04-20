@@ -30,6 +30,10 @@ landed_on = false;
 
 speed = global.PER_SECOND * global.SPD;
 direction = 180;
+
+/*shadow = instance_create(x, y+15, o_Shadow);
+shadow.image_xscale = .75;
+shadow.image_yscale = shadow.image_xscale;*/
 </string>
           </argument>
         </arguments>
@@ -53,6 +57,10 @@ direction = 180;
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
+/*with shadow
+{
+instance_destroy();
+}*/
 </string>
           </argument>
         </arguments>
@@ -85,21 +93,31 @@ if x == view_xview-50
 instance_destroy();
 }
 
-if y &lt;= view_yview+(view_hview/2)-20
+if y &lt;= NUM_Y
 {
 speed = 0;
 direction = 90;
 }
-
+/*
 if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; used==true
 {
 alarm[0] = room_speed*1.25;
 }
+*/
+
+/*if o_Control.done == true
+{
+instance_destroy();
+o_Control.done = false;
+}*/
 
 if !instance_exists(o_Bird)
 {
 landed_on = false;
 }
+
+//shadow.x = x;
+//shadow.y = y+15;
 </string>
           </argument>
         </arguments>
@@ -127,18 +145,22 @@ landed_on = false;
     if global.FIRST == 0
     {
     sprite_index = sp_OneSelected;
-    speed = global.PER_SECOND * 300;
-    direction = point_direction(x, y, view_xview+(view_wview/2)-57, view_yview+(view_hview/2)-20);
+    //speed = lerp(speed+150*global.COFFEE, 0, .25);
+    speed = global.PER_SECOND*(300+(150*global.COFFEE));
+    direction = point_direction(x, y, view_xview+(view_wview/2)-57, NUM_Y);
     global.FIRST = 1;
     used = true;
+    FIRST_NUM = self;
     }
     else if global.SECOND==0 &amp;&amp; used==false
     {
     sprite_index = sp_OneSelected;
-    speed = global.PER_SECOND * 300;
-    direction = point_direction(x, y, view_xview+(view_wview/2)+57, view_yview+(view_hview/2)-20);
+    //speed = lerp(speed+150*global.COFFEE, 0, .25);
+    speed = global.PER_SECOND*(300+(150*global.COFFEE));
+    direction = point_direction(x, y, view_xview+(view_wview/2)+57, NUM_Y);
     global.SECOND = 1;
     used = true;
+    SECOND_NUM = self;
     }
 }
 </string>
@@ -175,7 +197,8 @@ draw_set_color(c_white);
 }
 else
 {
-draw_set_color(make_color_rgb(200, 200, 200));
+draw_set_color(c_white);
+//draw_set_color(make_color_rgb(200, 200, 200));
 }
 
 draw_text(x, y, "1");

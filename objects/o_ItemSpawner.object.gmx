@@ -58,7 +58,7 @@ alarm[3] = room_speed*random_range(15, 45);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview+(view_hview/2.5), o_Free);
+            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview-20, o_Free);
 alarm[6] = room_speed*random_range(15, 30);
 </string>
           </argument>
@@ -82,7 +82,7 @@ alarm[6] = room_speed*random_range(15, 30);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview+(view_hview/2.5), o_MoreTime);
+            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview-10, o_MoreTime);
 alarm[5] = room_speed*random_range(25, 40);
 </string>
           </argument>
@@ -106,7 +106,7 @@ alarm[5] = room_speed*random_range(25, 40);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview+(view_hview/2.5), o_SlowDown);
+            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview-10, o_SlowDown);
 alarm[4] = room_speed*random_range(15, 40);
 </string>
           </argument>
@@ -154,7 +154,7 @@ alarm[3] = room_speed*random_range(30, 45);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview+(view_hview/2.5), o_SpeedUp);
+            <string>instance_create(random_range(view_xview, view_xview+view_wview), view_yview-10, o_SpeedUp);
 alarm[2] = room_speed*random_range(20, 40);
 </string>
           </argument>
