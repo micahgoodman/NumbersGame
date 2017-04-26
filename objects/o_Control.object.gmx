@@ -44,6 +44,8 @@ emitter1 = part_emitter_create(system1);
 
 reached = false;
 done = false;
+
+num_solved = 0;
 </string>
           </argument>
         </arguments>
@@ -120,7 +122,9 @@ with (instance_find(o_Number, i)) instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>o_Hint.hint = 0;
+            <string>num_solved++;
+
+o_Hint.hint = 0;
 global.FIRST = 0;
 global.SECOND = 0;
 
@@ -243,19 +247,30 @@ if global.LEVEL=="addition1" || global.LEVEL=="addition2"
     //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
-    if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST+global.SECOND != global.TARGET
+    if (global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST+global.SECOND!=global.TARGET) || (global.FIRST!=0 &amp;&amp; global.TARGET-global.FIRST&gt;9) || (global.FIRST!=0 &amp;&amp; global.FIRST&gt;=global.TARGET)
     {
         if reached == true
-        {
-        o_Hint.hint = 0;
-        global.FIRST = 0;
-        global.SECOND = 0;
-        }
-        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
-        {
-        alarm[1] = room_speed/4;
-        reached = true;
-        }
+            {
+            o_Hint.hint = 0;
+            global.FIRST = 0;
+            global.SECOND = 0;
+            }
+        if global.FIRST!=0 &amp;&amp; global.SECOND!=0
+            {
+            if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+                {
+                alarm[1] = room_speed/4;
+                reached = true;
+                }
+            }
+        else if global.FIRST!=0 &amp;&amp; global.SECOND=0
+            {
+            if FIRST_NUM.y&lt;=NUM_Y
+                {
+                alarm[1] = room_speed/4;
+                reached = true;
+                }
+            }
     //alarm[1] = room_speed*(1.25-.75*global.COFFEE);
     }
 }
@@ -281,18 +296,29 @@ if global.LEVEL == "subtraction1" || global.LEVEL=="subtraction2"
     //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
-    if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST-global.SECOND != global.TARGET
+    if (global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST-global.SECOND != global.TARGET) || (global.FIRST!=0 &amp;&amp; global.FIRST-global.TARGET&gt;9) || (global.FIRST!=0 &amp;&amp; global.FIRST&lt;=global.TARGET)
     {
         if reached == true
         {
-        o_Hint.hint = 0;
-        global.FIRST = 0;
-        global.SECOND = 0;
+            o_Hint.hint = 0;
+            global.FIRST = 0;
+            global.SECOND = 0;
         }
-        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        if global.FIRST!=0 &amp;&amp; global.SECOND!=0
         {
-        alarm[1] = room_speed/4;
-        reached = true;
+            if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+            {
+                alarm[1] = room_speed/4;
+                reached = true;
+            }
+        }
+        else if global.FIRST!=0 &amp;&amp; global.SECOND=0
+        {
+            if FIRST_NUM.y&lt;=NUM_Y
+            {
+                alarm[1] = room_speed/4;
+                reached = true;
+            }
         }
     }
 }
@@ -318,18 +344,29 @@ if global.LEVEL == "multiplication1" || global.LEVEL=="multiplication2"
     //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
-    if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST*global.SECOND != global.TARGET
+    if (global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST*global.SECOND!=global.TARGET) || (global.FIRST!=0 &amp;&amp; global.TARGET%global.FIRST!=0) || (global.FIRST!=0 &amp;&amp; global.TARGET/global.FIRST&gt;9)
     {
         if reached == true
         {
-        o_Hint.hint = 0;
-        global.FIRST = 0;
-        global.SECOND = 0;
+            o_Hint.hint = 0;
+            global.FIRST = 0;
+            global.SECOND = 0;
         }
-        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        if global.FIRST!=0 &amp;&amp; global.SECOND!=0
         {
-        alarm[1] = room_speed/4;
-        reached = true;
+            if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+            {
+                alarm[1] = room_speed/4;
+                reached = true;
+            }
+        }
+        else if global.FIRST!=0 &amp;&amp; global.SECOND=0
+        {
+            if FIRST_NUM.y&lt;=NUM_Y
+            {
+                alarm[1] = room_speed/4;
+                reached = true;
+            }
         }
     }
 }
@@ -355,18 +392,29 @@ if global.LEVEL == "division1" || global.LEVEL=="division2"
     //instance_create((view_xview+view_wview)/2, view_yview+80, o_CorrectText);
     }
     
-    if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST/global.SECOND!=global.TARGET
+    if (global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST/global.SECOND!=global.TARGET) || (global.FIRST!=0 &amp;&amp; global.FIRST/global.TARGET!=floor(global.FIRST/global.TARGET))
     {
         if reached == true
         {
-        o_Hint.hint = 0;
-        global.FIRST = 0;
-        global.SECOND = 0;
+            o_Hint.hint = 0;
+            global.FIRST = 0;
+            global.SECOND = 0;
         }
-        if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+        if global.FIRST!=0 &amp;&amp; global.SECOND!=0
         {
-        alarm[1] = room_speed/4;
-        reached = true;
+            if FIRST_NUM.y&lt;=NUM_Y &amp;&amp; SECOND_NUM.y&lt;=NUM_Y
+            {
+                alarm[1] = room_speed/4;
+                reached = true;
+            }
+        }
+        else if global.FIRST!=0 &amp;&amp; global.SECOND=0
+        {
+            if FIRST_NUM.y&lt;=NUM_Y
+            {
+                alarm[1] = room_speed/4;
+                reached = true;
+            }
         }
     }
 }
@@ -425,15 +473,19 @@ draw_rectangle(view_xview, view_yview+(view_hview/2), view_xview+view_wview, vie
 draw_set_color(make_color_rgb(167, 213, 242));
 draw_rectangle(view_xview, view_yview, view_xview+view_wview, view_yview+(view_hview/4), false);
 
+draw_set_color(make_color_rgb(140, 133, 34));
+draw_rectangle_color(view_xview, view_yview+(view_hview/3)+20, view_xview+view_wview, view_yview+(view_hview/3)+35, make_color_rgb(102, 136, 38), make_color_rgb(102, 136, 38), make_color_rgb(140, 133, 34), make_color_rgb(140, 133, 34), false);
+draw_rectangle_color(view_xview, view_yview+(view_hview/3)+35, view_xview+view_wview, view_yview+(view_hview/3)+50, make_color_rgb(140, 133, 34), make_color_rgb(140, 133, 34), make_color_rgb(102, 136, 38), make_color_rgb(102, 136, 38), false);
+
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 draw_set_color(c_black);
 draw_set_font(f_Info);
-draw_text(view_xview+view_wview-10, view_yview+7, "Lumber: " + string(LUMBER));
+draw_text(view_xview+view_wview-14, view_yview+34, "Lumber: " + string(LUMBER));
 
-draw_set_halign(fa_left);
+draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text(view_xview+10, view_yview+7, "Score: " + string(score));
+draw_text(view_xview+view_wview-14, view_yview+4, "Score: " + string(score));
 </string>
           </argument>
         </arguments>

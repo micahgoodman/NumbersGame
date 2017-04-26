@@ -29,6 +29,7 @@
 speed = global.PER_SECOND * 100;
 
 clicked = 0;
+tween = false;
 </string>
           </argument>
         </arguments>
@@ -51,7 +52,12 @@ clicked = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &gt; view_xview+view_wview
+            <string>if x&gt;=view_xview+(view_wview/2) &amp;&amp; clicked&lt;2
+{
+speed = 0;
+}
+
+if x &gt; view_xview+view_wview
 {
 instance_destroy();
 }
@@ -59,6 +65,25 @@ instance_destroy();
 if clicked &gt;= 2
 {
 speed = global.PER_SECOND * 300;
+}
+
+if tween == true
+{
+image_yscale = lerp(image_yscale, .85, .2);
+}
+
+if image_yscale &lt;= .9
+{
+tween = false;
+}
+
+if image_yscale&lt;1 &amp;&amp; tween = false
+{
+image_yscale = lerp(image_yscale, 1, .2);
+}
+if image_yscale &gt;= 1
+{
+//tween = false;
 }
 </string>
           </argument>
@@ -83,6 +108,8 @@ speed = global.PER_SECOND * 300;
           <argument>
             <kind>1</kind>
             <string>clicked += 1;
+
+tween = true;
 </string>
           </argument>
         </arguments>

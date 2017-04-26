@@ -128,11 +128,15 @@
     <object>objects\o_Hint</object>
     <object>objects\o_WrongShake</object>
     <object>objects\o_LevelsButton</object>
+    <object>objects\o_MainButton</object>
     <object>objects\o_Equation</object>
     <object>objects\o_Shadow</object>
     <object>objects\o_PopUp</object>
+    <object>objects\o_Stats</object>
     <object>objects\o_Continue</object>
     <object>objects\o_Exit</object>
+    <object>objects\o_GoToLevels</object>
+    <object>objects\o_PlayAgain</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_Title</room>

@@ -8,6 +8,56 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>costs[0] = 50; costs[1] = 100; costs[2] = 250; costs[3] = 500; costs[4] = 1000;
+costs[5] = 2500; costs[6] = 5000; costs[7] = 10000; costs[8] = 15000; costs[9] = 25000;
+costs[10] = 50000; costs[11] = 100000; costs[12] = 250000; costs[13] = 500000;
+costs[14] = 1000000; costs[15] = 1000000000;
+cost = costs[global.DAMWAY];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cost = costs[global.DAMWAY];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="7">
       <action>
         <libid>1</libid>
@@ -25,11 +75,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if LUMBER &gt;= 50
+            <string>if LUMBER &gt;= cost
 {
-LUMBER -= 50;
+LUMBER -= cost;
 global.DAMWAY += 1;
 }
+
+ini_open("info.ini");
+ini_write_real("Damway", "0", global.DAMWAY);
+ini_write_real("Lumber", "0", LUMBER);
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -58,7 +113,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Controls);
 draw_set_color(c_black);
-draw_text(x, y+87, "Damway#Cost: 50 Lumber#Join a pyramid#scheme, earn more lumber#with every solution.");
+draw_text(x, y+87, "Damway#Cost: " + string(cost) + " Lumber#Join a pyramid#scheme, earn more lumber#with every solution.");
 
 draw_set_font(f_Music);
 draw_text(x+40, y+8, "x" + string(global.DAMWAY));

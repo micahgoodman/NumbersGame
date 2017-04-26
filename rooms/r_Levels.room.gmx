@@ -68,6 +68,7 @@ ini_close();</code>
     <instance objName="o_Subtraction2" x="312" y="296" name="inst_A888C821" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Multiplication2" x="440" y="296" name="inst_FEC9FC6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Division2" x="568" y="296" name="inst_78843A17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_MainButton" x="320" y="448" name="inst_7B99ECB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

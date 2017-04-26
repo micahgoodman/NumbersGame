@@ -13,7 +13,7 @@
   <code>global.FIRST = 0;
 global.SECOND = 0;
 
-global.SPD = 225;
+global.SPD = 150;
 
 global.NUM_OBJECTS[0] = o_One;
 global.NUM_OBJECTS[1] = o_Two;
@@ -66,10 +66,10 @@ global.NUM_OBJECTS[8] = o_Nine;</code>
   <instances>
     <instance objName="o_NumberSpawner" x="320" y="240" name="inst_C7A5D0F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Control" x="528" y="32" name="inst_952FBF12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_Clock" x="320" y="32" name="inst_A25D2A57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_Clock" x="80" y="24" name="inst_A25D2A57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_ItemSpawner" x="304" y="240" name="inst_49755468" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_Beaver" x="144" y="176" name="inst_57517A2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_Plug" x="592" y="80" name="inst_00AEBD4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_Beaver" x="144" y="163" name="inst_57517A2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_Plug" x="592" y="87" name="inst_00AEBD4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Hint" x="592" y="112" name="inst_6BE0033F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Equation" x="320" y="200" name="inst_8449D4D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

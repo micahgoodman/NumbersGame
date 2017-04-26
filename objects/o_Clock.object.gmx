@@ -51,7 +51,9 @@ switch_room = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_Levels);
+            <string>//room_goto(r_Levels);
+
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/3), o_Stats);
 </string>
           </argument>
         </arguments>
@@ -100,11 +102,35 @@ if instance_exists(o_MoreTime)
     part_emitter_destroy(o_MoreTime.system1, o_MoreTime.emitter1);
     part_system_destroy(o_MoreTime.system1);
 }
+if instance_exists(o_MoreTime)
+{
+    part_type_destroy(o_MoreTime.particle2);
+    part_emitter_destroy(o_MoreTime.system2, o_MoreTime.emitter2);
+    part_system_destroy(o_MoreTime.system2);
+}
 if instance_exists(o_Free)
 {
     part_type_destroy(o_Free.particle1);
     part_emitter_destroy(o_Free.system1, o_Free.emitter1);
     part_system_destroy(o_Free.system1);
+}
+if instance_exists(o_Free)
+{
+    part_type_destroy(o_Free.particle2);
+    part_emitter_destroy(o_Free.system2, o_Free.emitter2);
+    part_system_destroy(o_Free.system2);
+}
+if instance_exists(o_Whirlpool)
+{
+    part_type_destroy(o_Whirlpool.particle1);
+    part_emitter_destroy(o_Whirlpool.system1, o_Whirlpool.emitter1);
+    part_system_destroy(o_Whirlpool.system1);
+}
+if instance_exists(o_Bird)
+{
+    part_type_destroy(o_Bird.particle1);
+    part_emitter_destroy(o_Bird.system1, o_Bird.emitter1);
+    part_system_destroy(o_Bird.system1);
 }
 }
 
@@ -139,7 +165,7 @@ switch_room = false;
 draw_set_valign(fa_middle);
 draw_set_color(c_black);
 draw_set_font(f_Info);
-draw_text(view_xview+(view_wview/2), view_yview+30, "Time: " + string(rounded_time));
+draw_text(x, y, "Time: " + string(rounded_time));
 </string>
           </argument>
         </arguments>

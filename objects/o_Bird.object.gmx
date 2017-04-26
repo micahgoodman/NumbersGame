@@ -34,6 +34,22 @@ landed_object = o_NumberSpawner;
 
 shooed = false;
 shooed_direction = point_direction(x, y, random_range(view_xview, view_xview+view_wview), view_yview);
+
+system1 = part_system_create();
+particle1 = part_type_create();
+part_type_shape(particle1,pt_shape_square);
+part_type_size(particle1,0.10,0.10,0,0);
+part_type_scale(particle1,1,1);
+part_type_color1(particle1,16777215);
+part_type_alpha1(particle1,1);
+part_type_speed(particle1,2,2,0,0);
+part_type_direction(particle1,15,165,0,0);
+part_type_gravity(particle1,0,270);
+part_type_orientation(particle1,0,0,0,0,1);
+part_type_blend(particle1,0);
+part_type_life(particle1,10,20);
+emitter1 = part_emitter_create(system1);
+
 </string>
           </argument>
         </arguments>
@@ -144,6 +160,9 @@ landed_object = other;
           <argument>
             <kind>1</kind>
             <string>clicked += 1;
+
+part_emitter_region(system1,emitter1,x-20,x-20,y-10,y-10,ps_shape_ellipse,1);
+part_emitter_burst(system1, emitter1, particle1, 5);
 </string>
           </argument>
         </arguments>

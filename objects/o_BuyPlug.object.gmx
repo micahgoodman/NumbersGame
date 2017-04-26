@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cost = 50;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="7">
       <action>
         <libid>1</libid>
@@ -25,11 +48,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if LUMBER &gt;= 50
+            <string>if LUMBER &gt;= cost
 {
-LUMBER -= 50;
+LUMBER -= cost;
 global.PLUGS += 1;
 }
+
+ini_open("info.ini");
+ini_write_real("Plugs", "0", global.PLUGS);
+ini_write_real("Lumber", "0", LUMBER);
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -58,7 +86,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Controls);
 draw_set_color(c_black);
-draw_text(x, y+65, "Drain Plug#Cost: 50 Lumber#Get rid of a#whirlpool.");
+draw_text(x, y+65, "Drain Plug#Cost: " + string(cost) + " Lumber#Get rid of a#whirlpool.");
 
 draw_set_font(f_Music);
 draw_text(x+33, y+5, "x" + string(global.PLUGS));
