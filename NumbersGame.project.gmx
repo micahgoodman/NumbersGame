@@ -12,6 +12,10 @@
     <sound>sound\so_MoreTime</sound>
     <sound>sound\so_SlowDown</sound>
     <sound>sound\so_SpeedUp</sound>
+    <sound>sound\so_Clicked</sound>
+    <sound>sound\so_Whirlpool</sound>
+    <sound>sound\so_BirdIn</sound>
+    <sound>sound\so_BirdOut</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_Number</sprite>
@@ -38,10 +42,12 @@
     <sprite>sprites\sp_Nine</sprite>
     <sprite>sprites\sp_NineSelected</sprite>
     <sprite>sprites\sp_Free</sprite>
+    <sprite>sprites\sp_Level</sprite>
     <sprite>sprites\sp_Addition</sprite>
     <sprite>sprites\sp_Subtraction</sprite>
     <sprite>sprites\sp_Multiplication</sprite>
     <sprite>sprites\sp_Division</sprite>
+    <sprite>sprites\sp_Division2</sprite>
     <sprite>sprites\sp_Boat</sprite>
     <sprite>sprites\sp_Bench</sprite>
     <sprite>sprites\sp_Tree</sprite>
@@ -51,6 +57,7 @@
     <sprite>sprites\sp_Bird</sprite>
     <sprite>sprites\sp_SpeedUp</sprite>
     <sprite>sprites\sp_SlowDown</sprite>
+    <sprite>sprites\sp_Arrow</sprite>
     <sprite>sprites\sp_MoreTime</sprite>
     <sprite>sprites\sp_Plug</sprite>
     <sprite>sprites\sp_Hint</sprite>
@@ -63,6 +70,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\b_Green</background>
+    <background>background\b_Levels</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -129,6 +137,7 @@
     <object>objects\o_WrongShake</object>
     <object>objects\o_LevelsButton</object>
     <object>objects\o_MainButton</object>
+    <object>objects\o_StoreButton</object>
     <object>objects\o_Equation</object>
     <object>objects\o_Shadow</object>
     <object>objects\o_PopUp</object>
@@ -137,8 +146,12 @@
     <object>objects\o_Exit</object>
     <object>objects\o_GoToLevels</object>
     <object>objects\o_PlayAgain</object>
+    <object>objects\o_Explanation</object>
+    <object>objects\o_Arrow</object>
+    <object>objects\o_Intro</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\r_Intro</room>
     <room>rooms\r_Title</room>
     <room>rooms\r_Field</room>
     <room>rooms\r_Levels</room>

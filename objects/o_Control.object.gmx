@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>4</depth>
+  <depth>1000000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -128,14 +128,14 @@ o_Hint.hint = 0;
 global.FIRST = 0;
 global.SECOND = 0;
 
-if global.LEVEL=="addition1" || global.LEVEL=="subtraction1" || global.LEVEL=="multiplication1" || global.LEVEL=="division1"
+if global.LEVEL==1 || global.LEVEL==3 || global.LEVEL==5 || global.LEVEL==7
 {
-LUMBER += global.TARGET+(5*global.DAMWAY);
+LUMBER += abs(global.TARGET)+(5*global.DAMWAY);
 score += 100;
 }
-else if global.LEVEL=="addition2" || global.LEVEL=="subtraction2" || global.LEVEL=="multiplication2" || global.LEVEL=="division2"
+else if global.LEVEL==2 || global.LEVEL==4 || global.LEVEL==6 || global.LEVEL==8 || global.LEVEL&gt;8
 {
-LUMBER += global.TARGET+(5*global.DAMWAY);
+LUMBER += abs(global.TARGET)+(5*global.DAMWAY);
 score += 150;
 }
 
@@ -226,7 +226,7 @@ part_emitter_burst(system1, emitter1, particle1, 75);
             <kind>1</kind>
             <string>if !instance_exists(o_LadyBeaver)
 {
-if global.LEVEL=="addition1" || global.LEVEL=="addition2"
+if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9
 {
     if global.FIRST+global.SECOND==global.TARGET &amp;&amp; global.SECOND!=0
     {
@@ -277,7 +277,7 @@ if global.LEVEL=="addition1" || global.LEVEL=="addition2"
 
 
 
-if global.LEVEL == "subtraction1" || global.LEVEL=="subtraction2"
+if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10
 {
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST-global.SECOND==global.TARGET
     {
@@ -325,7 +325,7 @@ if global.LEVEL == "subtraction1" || global.LEVEL=="subtraction2"
 
 
 
-if global.LEVEL == "multiplication1" || global.LEVEL=="multiplication2"
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11
 {
     if global.FIRST*global.SECOND == global.TARGET
     {
@@ -373,7 +373,7 @@ if global.LEVEL == "multiplication1" || global.LEVEL=="multiplication2"
 
 
 
-if global.LEVEL == "division1" || global.LEVEL=="division2"
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
 {
     if global.FIRST/global.SECOND == global.TARGET
     {

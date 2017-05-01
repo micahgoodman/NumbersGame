@@ -29,6 +29,12 @@
 
 paused = false;
 switch_room = false;
+
+time = delta_time/1000000;
+countdown -= time;
+rounded_time = round(countdown);
+
+if (PLAYED_BEFORE == 1) o_Explanation.start = true;
 </string>
           </argument>
         </arguments>
@@ -53,7 +59,7 @@ switch_room = false;
             <kind>1</kind>
             <string>//room_goto(r_Levels);
 
-instance_create(view_xview+(view_wview/2), view_yview+(view_hview/3), o_Stats);
+instance_create(view_xview+(view_wview/2), view_yview+(view_hview/2)-20, o_Stats);
 </string>
           </argument>
         </arguments>
@@ -76,7 +82,8 @@ instance_create(view_xview+(view_wview/2), view_yview+(view_hview/3), o_Stats);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if paused == false
+            <string>//if paused == false
+if o_Explanation.start==true &amp;&amp; o_NumberSpawner.start==true
 {
 time = delta_time/1000000;
 countdown -= time;
@@ -119,12 +126,6 @@ if instance_exists(o_Free)
     part_type_destroy(o_Free.particle2);
     part_emitter_destroy(o_Free.system2, o_Free.emitter2);
     part_system_destroy(o_Free.system2);
-}
-if instance_exists(o_Whirlpool)
-{
-    part_type_destroy(o_Whirlpool.particle1);
-    part_emitter_destroy(o_Whirlpool.system1, o_Whirlpool.emitter1);
-    part_system_destroy(o_Whirlpool.system1);
 }
 if instance_exists(o_Bird)
 {

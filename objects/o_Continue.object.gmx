@@ -3,7 +3,7 @@
   <spriteName>sp_LevelsButton</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>-100000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -51,6 +51,8 @@
             <string>with o_PopUp instance_destroy();
 with o_Exit instance_destroy();
 instance_destroy();
+
+o_NumberSpawner.start = true;
 </string>
           </argument>
         </arguments>

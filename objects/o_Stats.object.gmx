@@ -3,7 +3,7 @@
   <spriteName>sp_PopUp</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-4</depth>
+  <depth>-10000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x-90, y+90, o_PlayAgain);
-instance_create(x+180, y+90, o_GoToLevels);
+            <string>instance_create(x-135, y+90, o_PlayAgain);
+instance_create(x+110, y+90, o_GoToLevels);
 </string>
           </argument>
         </arguments>

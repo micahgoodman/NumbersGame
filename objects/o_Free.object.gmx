@@ -3,7 +3,7 @@
   <spriteName>sp_Free</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2</depth>
+  <depth>10000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -84,7 +84,7 @@ image_yscale = .5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if y &gt;= view_yview+(view_hview/3)+35
+            <string>if y &gt;= view_yview+(view_hview/3)+15
 {
 speed = 0;
 }
@@ -93,7 +93,7 @@ speed = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_Beaver">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>

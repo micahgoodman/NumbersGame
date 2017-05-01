@@ -25,15 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[4] = room_speed*random_range(10, 40);
+            <string>if global.LEVEL &gt; 1
+{
 alarm[5] = room_speed*random_range(20, 40);
 alarm[6] = room_speed*random_range(20, 50);
-
-if global.LEVEL == "addition2" || global.LEVEL=="subtraction2" || global.LEVEL=="multiplication2" || global.LEVEL=="division2"
+}
+if global.LEVEL &gt; 2
+{
+alarm[4] = room_speed*random_range(10, 40);
+}
+if global.LEVEL &gt; 3
+{
+alarm[1] = room_speed*random_range(20, 65);
+}
+if global.LEVEL &gt; 5
+{
+alarm[2] = room_speed*random_range(10, 30);
+}
+if global.LEVEL &gt; 7
 {
 alarm[0] = room_speed*random_range(4, 10);
-alarm[1] = room_speed*random_range(20, 65);
-alarm[2] = room_speed*random_range(10, 30);
+}
+if global.LEVEL &gt; 8
+{
 alarm[3] = room_speed*random_range(15, 45);
 }
 </string>
@@ -130,7 +144,10 @@ alarm[4] = room_speed*random_range(15, 40);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview-10, view_yview+(view_hview/2.4), o_LadyBeaver);
+            <string>if !instance_exists(o_LadyBeaver)
+{
+instance_create(view_xview-10, view_yview+(view_hview/2.4), o_LadyBeaver);
+}
 alarm[3] = room_speed*random_range(30, 45);
 </string>
           </argument>

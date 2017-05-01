@@ -54,7 +54,7 @@ draw_set_valign(fa_middle);
 draw_text(x, y, "Controls");
 
 draw_set_font(f_Info);
-draw_text(x, y+220, "&lt;Left Mouse&gt; to select stuff#&lt;A&gt; to move left#&lt;D&gt; to move right##&lt;L&gt; for levels#&lt;M&gt; for main menu#&lt;G&gt; for general store#&lt;S&gt; for backstory");
+draw_text(x, y+220, "&lt;Left Mouse&gt; to select numbers#&lt;A&gt; to move left#&lt;D&gt; to move right##&lt;L&gt; for levels#&lt;M&gt; for main menu#&lt;G&gt; for general store#&lt;S&gt; for backstory");
 </string>
           </argument>
         </arguments>

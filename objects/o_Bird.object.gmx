@@ -3,7 +3,7 @@
   <spriteName>sp_Bird</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-3</depth>
+  <depth>-1000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -48,6 +48,7 @@ part_type_gravity(particle1,0,270);
 part_type_orientation(particle1,0,0,0,0,1);
 part_type_blend(particle1,0);
 part_type_life(particle1,10,20);
+part_system_depth(system1, -1000000);
 emitter1 = part_emitter_create(system1);
 
 </string>

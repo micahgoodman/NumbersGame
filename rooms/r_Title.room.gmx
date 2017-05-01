@@ -19,6 +19,8 @@ globalvar LUMBER;
 globalvar HIGH_SCORE;
 
 globalvar NUM_Y; NUM_Y = view_yview+(view_hview/2)-30;
+globalvar NUM_X1; NUM_X1 = view_xview+(view_wview/2)-87;
+globalvar NUM_X2; NUM_X2 = view_xview+(view_wview/2)+87;
 
 ini_open("info.ini");
 global.PLUGS = ini_read_real("Plugs", "0", 0);

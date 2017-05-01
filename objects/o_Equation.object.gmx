@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2</depth>
+  <depth>1000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,27 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.LEVEL=="addition1" || global.LEVEL=="addition2"
+            <string>if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9
 {
 sprite_index = sp_Addition;
 }
 
-if global.LEVEL=="subtraction1" || global.LEVEL=="subtraction2"
+if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10
 {
 sprite_index = sp_Subtraction;
 }
 
-if global.LEVEL=="multiplication1" || global.LEVEL=="multiplication2"
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11
 {
 sprite_index = sp_Multiplication;
 }
 
-if global.LEVEL=="division1" || global.LEVEL=="division2"
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
 {
 sprite_index = sp_Division;
 }
 
-image_xscale = .4;
+image_xscale = .6;
 image_yscale = image_xscale;
 </string>
           </argument>
@@ -72,8 +72,8 @@ image_yscale = image_xscale;
             <string>draw_self();
 
 draw_set_color(c_black);
-draw_rectangle(x-90, y+32, x-25, y+38, 0);
-draw_rectangle(x+25, y+32, x+90, y+38, 0);
+draw_rectangle(x-120, y+24, x-55, y+30, 0);
+draw_rectangle(x+55, y+24, x+120, y+30, 0);
 </string>
           </argument>
         </arguments>

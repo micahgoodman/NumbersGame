@@ -25,12 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>shrink = false;
+            <string>on_top = true;
+
+depth = -y;
+
+shrink = false;
 collided = false;
 used = false;
 landed_on = false;
 
-speed = global.PER_SECOND * (global.SPD+random_range(-50, 50));
+if (y == view_yview+(view_hview*(7/12))) speed = global.PER_SECOND * global.SPD;
+else if (y == view_yview+(view_hview*(9/12))) speed = global.PER_SECOND * (global.SPD+50);
+else if (y == view_yview+(view_hview*(11/12))) speed = global.PER_SECOND * (global.SPD-50);
+
+//speed = global.PER_SECOND * (global.SPD+random_range(-50, 50));
 direction = 180;
 
 system1 = part_system_create();
@@ -155,22 +163,24 @@ landed_on = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if landed_on == false
+            <string>if landed_on==false &amp;&amp; on_top==true
 {
     if global.FIRST == 0
     {
+    depth = 500;
     sprite_index = sp_ThreeSelected;
     speed = global.PER_SECOND*(300+(150*global.COFFEE));
-    direction = point_direction(x, y, view_xview+(view_wview/2)-57, NUM_Y);
+    direction = point_direction(x, y, NUM_X1, NUM_Y);
     global.FIRST = 3;
     used = true;
     FIRST_NUM = self;
     }
     else if global.SECOND==0 &amp;&amp; used==false
     {
+    depth = 500;
     sprite_index = sp_ThreeSelected;
     speed = global.PER_SECOND*(300+(150*global.COFFEE));
-    direction = point_direction(x, y, view_xview+(view_wview/2)+57, NUM_Y);
+    direction = point_direction(x, y, NUM_X2, NUM_Y);
     global.SECOND = 3;
     used = true;
     SECOND_NUM = self;
@@ -216,6 +226,9 @@ draw_set_color(c_white);
 
 if shrink == false
 {
+draw_set_color(c_black);
+draw_text(x+3, y+2, "3");
+draw_set_color(c_white);
 draw_text(x, y, "3");
 }
 </string>
