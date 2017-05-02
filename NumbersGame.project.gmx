@@ -22,6 +22,7 @@
     <sprite>sprites\sp_Target</sprite>
     <sprite>sprites\sp_Spawner</sprite>
     <sprite>sprites\sp_Beaver</sprite>
+    <sprite>sprites\sp_BeaverBlink</sprite>
     <sprite>sprites\sp_LadyBeaver</sprite>
     <sprite>sprites\sp_One</sprite>
     <sprite>sprites\sp_OneSelected</sprite>
@@ -68,6 +69,19 @@
     <sprite>sprites\sp_Shadow</sprite>
     <sprite>sprites\sp_PopUp</sprite>
     <sprite>sprites\sp_TimeMachine</sprite>
+    <sprite>sprites\sp_Level1</sprite>
+    <sprite>sprites\sp_Level2</sprite>
+    <sprite>sprites\sp_Level3</sprite>
+    <sprite>sprites\sp_Level4</sprite>
+    <sprite>sprites\sp_Level5</sprite>
+    <sprite>sprites\sp_Level6</sprite>
+    <sprite>sprites\sp_Level7</sprite>
+    <sprite>sprites\sp_Level8</sprite>
+    <sprite>sprites\sp_Level9</sprite>
+    <sprite>sprites\sp_Level10</sprite>
+    <sprite>sprites\sp_Level11</sprite>
+    <sprite>sprites\sp_Level12</sprite>
+    <sprite>sprites\sp_Level13</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\b_Green</background>
@@ -107,14 +121,19 @@
     <object>objects\o_Target</object>
     <object>objects\o_LumberAvailable</object>
     <object>objects\o_Title</object>
-    <object>objects\o_Addition1</object>
-    <object>objects\o_Addition2</object>
-    <object>objects\o_Subtraction1</object>
-    <object>objects\o_Subtraction2</object>
-    <object>objects\o_Multiplication1</object>
-    <object>objects\o_Multiplication2</object>
-    <object>objects\o_Division1</object>
-    <object>objects\o_Division2</object>
+    <object>objects\o_Level1</object>
+    <object>objects\o_Level2</object>
+    <object>objects\o_Level3</object>
+    <object>objects\o_Level4</object>
+    <object>objects\o_Level5</object>
+    <object>objects\o_Level6</object>
+    <object>objects\o_Level7</object>
+    <object>objects\o_Level8</object>
+    <object>objects\o_Level9</object>
+    <object>objects\o_Level10</object>
+    <object>objects\o_Level11</object>
+    <object>objects\o_Level12</object>
+    <object>objects\o_Level13</object>
     <object>objects\o_Levels</object>
     <object>objects\o_GeneralStore</object>
     <object>objects\o_Controls</object>

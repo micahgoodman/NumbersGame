@@ -77,7 +77,7 @@ draw_text(x, y+220, "&lt;Left Mouse&gt; to select numbers#and items##&lt;L&gt; f
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_BackStory);
+            <string>//room_goto(r_BackStory);
 </string>
           </argument>
         </arguments>

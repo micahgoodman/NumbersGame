@@ -50,7 +50,21 @@ fade = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (fade &gt;= 0) fade -= .005;
+            <string>global.PER_SECOND = delta_time/1000000;
+
+if o_Beaver.x &lt; 640
+{
+if (fade &gt;= 0) fade -= .005;
+}
+
+if o_Beaver.x &gt;= 640
+{
+fade += .1;
+if fade &gt;= 1
+    {
+    room_goto(r_Title);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -75,7 +89,7 @@ fade = 1;
             <kind>1</kind>
             <string>draw_set_color(c_black);
 draw_set_alpha(fade);
-draw_rectangle(view_xview, view_yview, view_xview+view_wview, view_yview+view_hview, 0);
+draw_rectangle(view_xview-100, view_yview, view_xview+view_wview, view_yview+view_hview, 0);
 </string>
           </argument>
         </arguments>

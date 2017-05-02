@@ -91,7 +91,7 @@ draw_text(x, view_yview+view_hview-30, "Music by Shake That Little Foot");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_BackStory);
+            <string>//room_goto(r_BackStory);
 </string>
           </argument>
         </arguments>

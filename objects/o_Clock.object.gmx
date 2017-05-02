@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>countdown = 30;
+            <string>if (global.LEVEL &lt; 13) countdown = 60;
+else countdown = 180;
 
 paused = false;
 switch_room = false;

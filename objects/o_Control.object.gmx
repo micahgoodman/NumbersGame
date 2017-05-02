@@ -100,9 +100,11 @@ with (instance_find(o_Number, i)) instance_destroy();
 }*/
 
 with (FIRST_NUM) instance_destroy();
-if instance_exists(SECOND_NUM)
+FIRST_NUM = noone;
+if SECOND_NUM != noone
 {
 with (SECOND_NUM) instance_destroy();
+SECOND_NUM = noone;
 }
 </string>
           </argument>
@@ -132,16 +134,16 @@ o_Hint.hint = 0;
 global.FIRST = 0;
 global.SECOND = 0;
 
-if global.LEVEL==1 || global.LEVEL==3 || global.LEVEL==5 || global.LEVEL==7
-{
-LUMBER += abs(global.TARGET)+(5*global.DAMWAY);
+//if global.LEVEL==1 || global.LEVEL==3 || global.LEVEL==5 || global.LEVEL==7
+//{
+LUMBER += floor(abs(global.TARGET))+(5*global.DAMWAY);
 score += 100;
-}
+/*}
 else if global.LEVEL==2 || global.LEVEL==4 || global.LEVEL==6 || global.LEVEL==8 || global.LEVEL&gt;8
 {
-LUMBER += abs(global.TARGET)+(5*global.DAMWAY);
+LUMBER += floor(abs(global.TARGET))+(5*global.DAMWAY);
 score += 150;
-}
+}*/
 
 with o_Target
     {
@@ -184,9 +186,11 @@ with (instance_find(o_Number, i)) instance_destroy();
 }*/
 
 with (FIRST_NUM) instance_destroy();
+FIRST_NUM = noone;
 if instance_exists(SECOND_NUM)
 {
 with (SECOND_NUM) instance_destroy();
+SECOND_NUM = noone;
 }
 
 with (FIRST_NUM)

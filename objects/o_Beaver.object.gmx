@@ -31,6 +31,7 @@ jumpspeed = 7;*/
 
 if global.LEVEL == 0
 {
+sprite_index = sp_BeaverBlink;
 depth = -100;
 image_angle = 90;
 alarm[0] = room_speed*7;
@@ -62,6 +63,7 @@ awake = false;
             <string>y -= 10;
 image_angle = 360;
 awake = true;
+sprite_index = sp_Beaver;
 </string>
           </argument>
         </arguments>
@@ -99,11 +101,10 @@ if (place_meeting(x,y+vsp,o_Number))
 
 y += vsp;*/
 
-if o_Explanation.paragraph==o_Explanation.explanation[0, 5] &amp;&amp; awake==true
+if o_Explanation.paragraph==o_Explanation.explanation[0, 3] &amp;&amp; awake==true
 {
 direction = 0;
-speed = lerp(speed, global.PER_SECOND*150, .1);
-show_debug_message(global.PER_SECOND);
+speed = lerp(speed, global.PER_SECOND*125, .1);
 }
 </string>
           </argument>

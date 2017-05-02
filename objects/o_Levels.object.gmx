@@ -72,7 +72,7 @@ draw_text(x, y, "Levels");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_BackStory);
+            <string>//room_goto(r_BackStory);
 </string>
           </argument>
         </arguments>

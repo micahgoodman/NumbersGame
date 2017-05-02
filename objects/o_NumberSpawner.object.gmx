@@ -68,7 +68,7 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+60, view_yview+(view_hview*(11/12)), numbers[random(9)]);
+            <string>instance_create(view_xview+view_wview+50, view_yview+(view_hview*(11/12)), numbers[random(9)]);
 alarm[3] = room_speed/random_range(.5, .8);
 
 </string>
@@ -93,7 +93,7 @@ alarm[3] = room_speed/random_range(.5, .8);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+60, view_yview+(view_hview*(9/12)), numbers[random(9)]);
+            <string>instance_create(view_xview+view_wview+50, view_yview+(view_hview*(9/12)), numbers[random(9)]);
 alarm[2] = room_speed/random_range(.75, 1.5);
 
 </string>
@@ -118,7 +118,7 @@ alarm[2] = room_speed/random_range(.75, 1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+60, view_yview+(view_hview*(7/12)), numbers[random(9)]);
+            <string>instance_create(view_xview+view_wview+50, view_yview+(view_hview*(7/12)), numbers[random(9)]);
 alarm[1] = room_speed/random_range(.75, 1.15);
 </string>
           </argument>
@@ -175,7 +175,7 @@ global.TARGET = round(first_adder) * round(second_adder);
 }
 else if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
 {
-global.TARGET = round(random_range(1, 9.49));
+global.TARGET = round(random_range(1, 9.49))/round(random_range(1, 9.49));
 //global.TARGET = round(first_adder) / round(second_adder);
 }
 

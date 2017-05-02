@@ -192,7 +192,7 @@ if (ds_list_size(CLICKED_OBJECTS) &gt; 1)
     }
 }
 
-if landed_on==false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
+if o_Explanation.paragraph=="" &amp;&amp; landed_on==false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
 {
     if global.FIRST == 0
     {

@@ -27,11 +27,9 @@
             <kind>1</kind>
             <string>explanation[0, 0] = "Where am I?";
 explanation[0, 1] = "What happened?";
-explanation[0, 2] = "Have I always been a beaver?"
-explanation[0, 3] = "What a silly question.";
-explanation[0, 4] = "Oh look, there's a time machine,#that's super convenient.";
-explanation[0, 5] = "Maybe it'll help me find some answers.";
-explanation[0, 6] = "";
+explanation[0, 2] = "Oh look, there's a time machine,#that's super convenient.";
+explanation[0, 3] = "Maybe it'll help me find some answers.";
+explanation[0, 4] = "";
 
 explanation[1, 0] = "All this stuff is helping#me remember a little.";
 explanation[1, 1] = "I used to be numberjack...#a really good one!#No one could collect#number lumber like I could."
@@ -50,7 +48,7 @@ explanation[2, 3] = "Be on the lookout for#those and click them when#you see the
 explanation[2, 4] = "";
 
 explanation[3, 0] = "Whoa, seems like you need to#subtract the number lumber this#time, I had forgotten about that.";
-explanation[3, 1] = "But on the plus side there#will be another powerup available.";
+explanation[3, 1] = "But on the plus side#there will be another#powerup available.";
 explanation[3, 2] = "";
 
 explanation[4, 0] = "Oh no -- it's all starting to#come back to me -- this#tournament is when things#started getting fishy.";
@@ -58,8 +56,8 @@ explanation[4, 1] = "Someone didn't like that I#was donating so much lumber.#The
 explanation[4, 2] = "Whirlpools began to show up.";
 explanation[4, 3] = "";
 
-explanation[5, 0] = "They're trying to trip me up by#making me multiply the logs now.";
-explanation[5, 1] = "Yep, someone was pretty upset with#all the lumber I was giving away.";
+explanation[5, 0] = "They're trying to trip#me up by making me#multiply the logs now.";
+explanation[5, 1] = "Yep, someone was pretty#upset with all the#lumber I was giving away.";
 explanation[5, 2] = "Someone who would stand to#lose if beavers that weren't#able to collect lumber and#had to rent it suddenly#got it for free.";
 explanation[5, 3] = "Someone taking advantage of#others' misfortune.";
 explanation[5, 4] = "Someone like...";
@@ -69,7 +67,7 @@ explanation[5, 6] = "";
 explanation[6, 0] = "Oh man, I wish I hadn't#remembered Jerkface.";
 explanation[6, 1] = "I once saw him rip a#log out of the hands of#an elderly beaver, then#sell the log back to her.";
 explanation[6, 2] = "His lumber rental company#makes beavers go bankrupt,#and then they have to#work for him to pay for#the logs in their homes."
-explanation[6, 3] = "He put on these tournaments as#a way for champion numberjacks like#me to collect logs for him,";
+explanation[6, 3] = "He put on these tournaments#as a way for champion#numberjacks like me to collect#logs for him,";
 explanation[6, 4] = "and then he'd buy them from#us at a tiny fraction of#what they were worth.";
 explanation[6, 5] = "You can imagine that he#wasn't so happy when I started#donating my lumber instead#of selling it to him.";
 explanation[6, 6] = "At this competition he#started adding an item that#speeds up the river --#be careful not to click on it.";
@@ -112,7 +110,7 @@ explanation[13, 5] = "He noticed I couldn't stop.";
 explanation[13, 6] = "So he made this#tournament go on and on.";
 explanation[13, 7] = "I kept up for a while,#pushed myself to my limits,#but then passed out#and almost drowned.";
 explanation[13, 8] = "But now I have you.";
-explanation[13, 9] = "Let's win this competition and#show Jerkface once and for all that#his days of pushing this#community around are over.";
+explanation[13, 9] = "Let's win this competition#and show Jerkface once and#for all that his days of#pushing this community#around are over.";
 explanation[13, 10] = "";
 
 
@@ -159,6 +157,14 @@ if global.LEVEL == 0
 {
     x = view_xview+(view_wview/3);
     y = view_yview+(view_hview/5);
+}
+if paragraph == explanation[0, 3]
+{
+    x = o_Beaver.x + 50;
+}
+if o_Beaver.x &gt;= 400
+{
+    sentence = 4;
 }
 
 if COMPLETED == 0
