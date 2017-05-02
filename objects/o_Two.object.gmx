@@ -221,7 +221,14 @@ if o_Explanation.paragraph=="" &amp;&amp; landed_on==false &amp;&amp; on_top==tr
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>if shrink == false
+{
+draw_set_alpha(.5);
+draw_ellipse(x-40, y-20, x+40, y+40, 0);
+draw_set_alpha(1);
+}
+
+draw_self();
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
