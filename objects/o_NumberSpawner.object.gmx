@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>start = true;
+target_exists = false;
 
 global.PER_SECOND = delta_time/1000000;
 
@@ -67,8 +68,8 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+50, view_yview+(view_hview*(11/12)), numbers[random(9)]);
-alarm[3] = room_speed/random_range(.5, .9);
+            <string>instance_create(view_xview+view_wview+60, view_yview+(view_hview*(11/12)), numbers[random(9)]);
+alarm[3] = room_speed/random_range(.5, .8);
 
 </string>
           </argument>
@@ -92,7 +93,7 @@ alarm[3] = room_speed/random_range(.5, .9);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+50, view_yview+(view_hview*(9/12)), numbers[random(9)]);
+            <string>instance_create(view_xview+view_wview+60, view_yview+(view_hview*(9/12)), numbers[random(9)]);
 alarm[2] = room_speed/random_range(.75, 1.5);
 
 </string>
@@ -117,7 +118,7 @@ alarm[2] = room_speed/random_range(.75, 1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(view_xview+view_wview+50, view_yview+(view_hview*(7/12)), numbers[random(9)]);
+            <string>instance_create(view_xview+view_wview+60, view_yview+(view_hview*(7/12)), numbers[random(9)]);
 alarm[1] = room_speed/random_range(.75, 1.15);
 </string>
           </argument>
@@ -157,7 +158,6 @@ while second_adder == first_adder
 {
 second_adder = global.NUMS[random_range(0, 5)]+1;
 }
-
 
 if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9
 {

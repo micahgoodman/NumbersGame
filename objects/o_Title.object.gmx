@@ -48,7 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);
+            <string>draw_set_alpha(1);
+draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_color(make_color_rgb(47, 22, 15));
 
@@ -64,7 +65,7 @@ draw_set_font(f_Controls);
 draw_text(x, y+45, "High Score: " + string(HIGH_SCORE));
 
 draw_set_font(f_Info);
-draw_text(x, y+105, "&lt;C&gt; for Controls#&lt;S&gt; for heart-wrenching backstory");
+draw_text(x, y+105, "&lt;C&gt; for Controls");
 
 draw_set_font(f_Music);
 draw_text(x, view_yview+view_hview-30, "Music by Shake That Little Foot");

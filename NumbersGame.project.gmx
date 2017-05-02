@@ -67,12 +67,16 @@
     <sprite>sprites\sp_LevelsButton</sprite>
     <sprite>sprites\sp_Shadow</sprite>
     <sprite>sprites\sp_PopUp</sprite>
+    <sprite>sprites\sp_TimeMachine</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\b_Green</background>
     <background>background\b_Levels</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\sc_Overlap.gml</script>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\f_Title</font>
     <font>fonts\f_GeneralStore</font>
@@ -89,6 +93,7 @@
   <objects name="objects">
     <object>objects\o_NumberSpawner</object>
     <object>objects\o_Number</object>
+    <object>objects\o_Mouse</object>
     <object>objects\o_One</object>
     <object>objects\o_Two</object>
     <object>objects\o_Three</object>
@@ -98,8 +103,8 @@
     <object>objects\o_Seven</object>
     <object>objects\o_Eight</object>
     <object>objects\o_Nine</object>
-    <object>objects\o_Target</object>
     <object>objects\o_Control</object>
+    <object>objects\o_Target</object>
     <object>objects\o_LumberAvailable</object>
     <object>objects\o_Title</object>
     <object>objects\o_Addition1</object>
@@ -146,9 +151,11 @@
     <object>objects\o_Exit</object>
     <object>objects\o_GoToLevels</object>
     <object>objects\o_PlayAgain</object>
+    <object>objects\o_NextLevel</object>
     <object>objects\o_Explanation</object>
     <object>objects\o_Arrow</object>
     <object>objects\o_Intro</object>
+    <object>objects\o_TimeMachine</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_Intro</room>

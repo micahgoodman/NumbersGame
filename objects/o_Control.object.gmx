@@ -89,17 +89,21 @@ if instance_exists(global.NUM_OBJECTS[i])
 done = true;
 reached = false;
 
-
+/*
 var i
 for (i=0; i&lt;instance_number(o_Number); i++)
 {
-if instance_find(o_Number, i).y &lt;= view_yview+(view_hview/2)-16
+if instance_find(o_Number, i).y &lt;= NUM_Y+30
 {
 with (instance_find(o_Number, i)) instance_destroy();
 }
+}*/
+
+with (FIRST_NUM) instance_destroy();
+if instance_exists(SECOND_NUM)
+{
+with (SECOND_NUM) instance_destroy();
 }
-
-
 </string>
           </argument>
         </arguments>
@@ -170,13 +174,19 @@ done = true;
 reached = false;
 
 
-var i
+/*var i
 for (i=0; i&lt;instance_number(o_Number); i++)
 {
-if instance_find(o_Number, i).y &lt;= view_yview+(view_hview/2)-16
+if instance_find(o_Number, i).y &lt;= NUM_Y+30
 {
 with (instance_find(o_Number, i)) instance_destroy();
 }
+}*/
+
+with (FIRST_NUM) instance_destroy();
+if instance_exists(SECOND_NUM)
+{
+with (SECOND_NUM) instance_destroy();
 }
 
 with (FIRST_NUM)

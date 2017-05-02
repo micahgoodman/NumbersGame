@@ -28,8 +28,10 @@
             <string>explanation[0, 0] = "Where am I?";
 explanation[0, 1] = "What happened?";
 explanation[0, 2] = "Have I always been a beaver?"
-explanation[0, 3] = "Oh look, there's a time machine,#that's super convenient.#Maybe it'll help me find some answers.";
-explanation[0, 4] = "";
+explanation[0, 3] = "What a silly question.";
+explanation[0, 4] = "Oh look, there's a time machine,#that's super convenient.";
+explanation[0, 5] = "Maybe it'll help me find some answers.";
+explanation[0, 6] = "";
 
 explanation[1, 0] = "All this stuff is helping#me remember a little.";
 explanation[1, 1] = "I used to be numberjack...#a really good one!#No one could collect#number lumber like I could."
@@ -51,7 +53,7 @@ explanation[3, 0] = "Whoa, seems like you need to#subtract the number lumber thi
 explanation[3, 1] = "But on the plus side there#will be another powerup available.";
 explanation[3, 2] = "";
 
-explanation[4, 0] = "Oh no -- it's all starting to#come back to me -- this tournament#is when things started getting fishy#(not in the good way).";
+explanation[4, 0] = "Oh no -- it's all starting to#come back to me -- this#tournament is when things#started getting fishy.";
 explanation[4, 1] = "Someone didn't like that I#was donating so much lumber.#They started making the#competitions dangerous#in order to stop me.";
 explanation[4, 2] = "Whirlpools began to show up.";
 explanation[4, 3] = "";
@@ -114,6 +116,12 @@ explanation[13, 9] = "Let's win this competition and#show Jerkface once and for 
 explanation[13, 10] = "";
 
 
+if instance_exists(o_Intro)
+{
+depth = -100;
+global.LEVEL = 0;
+}
+
 start = false;
 
 sentence = 0;
@@ -145,9 +153,15 @@ y = view_yview+(view_hview/4);
             <kind>1</kind>
             <string>paragraph = explanation[global.LEVEL, sentence];
 
-if (paragraph=="" || PLAYED_BEFORE==1) start = true;
+if (paragraph=="" || COMPLETED&gt;=global.LEVEL) start = true;
 
-if PLAYED_BEFORE == 0
+if global.LEVEL == 0
+{
+    x = view_xview+(view_wview/3);
+    y = view_yview+(view_hview/5);
+}
+
+if COMPLETED == 0
 {
     if paragraph == explanation[1, 3]
     {
@@ -184,13 +198,14 @@ if PLAYED_BEFORE == 0
     {
         with o_Arrow instance_destroy();
     }
-    
-    if paragraph == explanation[2, 0]
-    {
-        x = view_xview+(view_wview/2);
-        y = view_yview+(view_hview/4);
-    }
 }
+
+if paragraph == explanation[2, 0]
+{
+    x = view_xview+(view_wview/2);
+    y = view_yview+(view_hview/4);
+}
+
 </string>
           </argument>
         </arguments>
@@ -216,8 +231,23 @@ if PLAYED_BEFORE == 0
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Music);
+draw_set_alpha(1);
 
-if PLAYED_BEFORE == 0
+if global.LEVEL==0 &amp;&amp; o_Beaver.awake==true
+{
+    if paragraph != ""
+    {
+    paragraph_height = string_height(paragraph);
+    paragraph_width = string_width(paragraph);
+    draw_set_color(c_white);
+    draw_roundrect(x-((paragraph_width/2)+5), y-((paragraph_height/2)+5), x+(paragraph_width/2)+5, y+(paragraph_height/2)+5, 0);
+    }
+    
+    draw_set_color(c_black);
+    draw_text(x, y, paragraph);
+}
+
+if COMPLETED &lt; global.LEVEL
 {
     if paragraph != ""
     {
@@ -254,7 +284,7 @@ if PLAYED_BEFORE == 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if explanation[global.LEVEL, sentence] != ""
+            <string>if (o_Beaver.awake==true || global.LEVEL&gt;0) &amp;&amp; explanation[global.LEVEL, sentence]!=""
 {
     sentence += 1;
 }

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fade = 0;
+            <string>global.PER_SECOND = delta_time/1000000;
+
+fade = 1;
 </string>
           </argument>
         </arguments>
@@ -48,7 +50,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (fade &lt; 1) fade = lerp(fade, 1, .05);
+            <string>if (fade &gt;= 0) fade -= .005;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_black);
+draw_set_alpha(fade);
+draw_rectangle(view_xview, view_yview, view_xview+view_wview, view_yview+view_hview, 0);
 </string>
           </argument>
         </arguments>
@@ -71,9 +98,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
-draw_set_alpha(fade);
-draw_rectangle(view_xview, view_yview, view_xview+view_wview, view_yview+view_hview, 0);
+            <string>draw_set_alpha(1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+draw_set_color(make_color_rgb(91, 106, 242));
+draw_rectangle(view_xview, view_yview+(view_hview/2), view_xview+view_wview, view_yview+view_hview, false);
+
+draw_set_color(make_color_rgb(167, 213, 242));
+draw_rectangle(view_xview, view_yview, view_xview+view_wview, view_yview+(view_hview/4), false);
+
+draw_set_color(make_color_rgb(140, 133, 34));
+draw_rectangle_color(view_xview, view_yview+(view_hview/3)+20, view_xview+view_wview, view_yview+(view_hview/3)+35, make_color_rgb(102, 136, 38), make_color_rgb(102, 136, 38), make_color_rgb(140, 133, 34), make_color_rgb(140, 133, 34), false);
+draw_rectangle_color(view_xview, view_yview+(view_hview/3)+35, view_xview+view_wview, view_yview+(view_hview/3)+50, make_color_rgb(140, 133, 34), make_color_rgb(140, 133, 34), make_color_rgb(102, 136, 38), make_color_rgb(102, 136, 38), false);
 </string>
           </argument>
         </arguments>

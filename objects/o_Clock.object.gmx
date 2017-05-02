@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>countdown = 60;
+            <string>countdown = 30;
 
 paused = false;
 switch_room = false;
@@ -34,7 +34,7 @@ time = delta_time/1000000;
 countdown -= time;
 rounded_time = round(countdown);
 
-if (PLAYED_BEFORE == 1) o_Explanation.start = true;
+if (COMPLETED &gt;= global.LEVEL) o_Explanation.start = true;
 </string>
           </argument>
         </arguments>

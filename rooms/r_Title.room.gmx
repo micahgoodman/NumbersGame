@@ -12,8 +12,10 @@
   <showcolour>-1</showcolour>
   <code>global.PER_SECOND = delta_time/1000000;
 
-globalvar FIRST_NUM; FIRST_NUM = o_Number;
-globalvar SECOND_NUM; SECOND_NUM = o_Number;
+globalvar CLICKED_OBJECTS; CLICKED_OBJECTS = ds_list_create();
+
+globalvar FIRST_NUM; FIRST_NUM = noone;
+globalvar SECOND_NUM; SECOND_NUM = noone;
 
 globalvar LUMBER;
 globalvar HIGH_SCORE;

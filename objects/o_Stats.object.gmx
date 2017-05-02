@@ -25,8 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x-135, y+90, o_PlayAgain);
-instance_create(x+110, y+90, o_GoToLevels);
+            <string>instance_create(x-160, y+75, o_PlayAgain);
+instance_create(x+155, y+75, o_GoToLevels);
+
+with (o_GameOver) instance_destroy();
+
+if (global.LEVEL == 1) COMPLETED = 1;
+if (global.LEVEL == 2) COMPLETED = 2;
+if (global.LEVEL == 3) COMPLETED = 3;
+if (global.LEVEL == 4) COMPLETED = 4;
+if (global.LEVEL == 5) COMPLETED = 5;
+if (global.LEVEL == 6) COMPLETED = 6;
+if (global.LEVEL == 7) COMPLETED = 7;
+if (global.LEVEL == 8) COMPLETED = 8;
+if (global.LEVEL == 9) COMPLETED = 9;
+if (global.LEVEL == 10) COMPLETED = 10;
+if (global.LEVEL == 11) COMPLETED = 11;
+if (global.LEVEL == 12) COMPLETED = 12;
+if (global.LEVEL == 13) COMPLETED = 13;
+
+ini_open("info.ini");
+ini_write_real("Completed", "0", COMPLETED);
+ini_close();
+
+
+if (score &gt;= 1500) medal = "gold";
+else if (score &gt;=1000) medal = "silver";
+else if (score &gt;=700) medal = "bronze";
+else medal = "none";
+
+if medal != "none"
+{
+instance_create(x-3, y+75, o_NextLevel);
+}
 </string>
           </argument>
         </arguments>
@@ -55,7 +86,15 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_color(c_black);
 draw_set_font(f_Buttons);
-draw_text(x, y-20, "You solved " + string(o_Control.num_solved) + " problems!");
+draw_text(x, y-70, "You scored " + string(score) + " points!");
+if medal == "none"
+{
+draw_text(x, y-5, "Unfortunately, that's not#enough to move on.#Keep at it!");
+}
+else
+{
+draw_text(x, y-5, "That earns you a " + medal + " medal.");
+}
 </string>
           </argument>
         </arguments>

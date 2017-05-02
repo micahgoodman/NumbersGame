@@ -128,6 +128,8 @@ instance_destroy();
 
 if y &lt;= NUM_Y
 {
+depth = -y;
+
 speed = 0;
 direction = 90;
 }
@@ -163,12 +165,22 @@ landed_on = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if landed_on==false &amp;&amp; on_top==true
+            <string>sc_Overlap();
+if (ds_list_size(CLICKED_OBJECTS) &gt; 1)
+{
+    for (var i=0; i&lt;ds_list_size(CLICKED_OBJECTS); i++)
+    {
+        if (depth &gt; CLICKED_OBJECTS[| i].depth) on_top = false;
+    }
+}
+
+if landed_on==false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
 {
     if global.FIRST == 0
     {
-    depth = 500;
-    sprite_index = sp_ThreeSelected;
+    //depth = 500;
+    audio_play_sound(so_Clicked, 1, 0);
+    //sprite_index = sp_ThreeSelected;
     speed = global.PER_SECOND*(300+(150*global.COFFEE));
     direction = point_direction(x, y, NUM_X1, NUM_Y);
     global.FIRST = 3;
@@ -177,8 +189,9 @@ landed_on = false;
     }
     else if global.SECOND==0 &amp;&amp; used==false
     {
-    depth = 500;
-    sprite_index = sp_ThreeSelected;
+    //depth = 500;
+    audio_play_sound(so_Clicked, 1, 0);
+    //sprite_index = sp_ThreeSelected;
     speed = global.PER_SECOND*(300+(150*global.COFFEE));
     direction = point_direction(x, y, NUM_X2, NUM_Y);
     global.SECOND = 3;
@@ -216,19 +229,19 @@ draw_set_font(f_Numbers);
 
 if used == true
 {
-draw_set_color(c_white);
+draw_set_color(c_black);
 }
 else
 {
-draw_set_color(c_white);
+draw_set_color(c_black);
 //draw_set_color(make_color_rgb(200, 200, 200));
 }
 
 if shrink == false
 {
+//draw_set_color(c_black);
+//draw_text(x+3, y+2, "3");
 draw_set_color(c_black);
-draw_text(x+3, y+2, "3");
-draw_set_color(c_white);
 draw_text(x, y, "3");
 }
 </string>

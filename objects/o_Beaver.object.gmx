@@ -25,9 +25,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>grav = 0.2;
+            <string>/*grav = 0.2;
 vsp = 0;
-jumpspeed = 7;
+jumpspeed = 7;*/
+
+if global.LEVEL == 0
+{
+depth = -100;
+image_angle = 90;
+alarm[0] = room_speed*7;
+}
+
+awake = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>y -= 10;
+image_angle = 360;
+awake = true;
 </string>
           </argument>
         </arguments>
@@ -64,6 +98,13 @@ if (place_meeting(x,y+vsp,o_Number))
 }
 
 y += vsp;*/
+
+if o_Explanation.paragraph==o_Explanation.explanation[0, 5] &amp;&amp; awake==true
+{
+direction = 0;
+speed = lerp(speed, global.PER_SECOND*150, .1);
+show_debug_message(global.PER_SECOND);
+}
 </string>
           </argument>
         </arguments>
@@ -86,7 +127,7 @@ y += vsp;*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room_get_name(room) == "r_Field"
+            <string>/*if room_get_name(room) == "r_Field"
 {
     if x+10 &lt;= view_xview+view_wview
     {
@@ -109,7 +150,7 @@ else
     {
     speed = 0;
     }
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -132,7 +173,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x-10 &gt;= view_xview
+            <string>/*
+if x-10 &gt;= view_xview
 {
 direction = 180;
 speed = lerp(speed, global.PER_SECOND*(200+150*global.COFFEE), .1);
@@ -141,6 +183,7 @@ else
 {
 speed = 0;
 }
+*/
 </string>
           </argument>
         </arguments>
