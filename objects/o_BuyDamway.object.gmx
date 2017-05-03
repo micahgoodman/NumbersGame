@@ -30,6 +30,10 @@ costs[5] = 2500; costs[6] = 5000; costs[7] = 10000; costs[8] = 15000; costs[9] =
 costs[10] = 50000; costs[11] = 100000; costs[12] = 250000; costs[13] = 500000;
 costs[14] = 1000000; costs[15] = 1000000000;
 cost = costs[global.DAMWAY];
+
+hovered = false;
+start_lerp = false;
+text = false;
 </string>
           </argument>
         </arguments>
@@ -53,6 +57,69 @@ cost = costs[global.DAMWAY];
           <argument>
             <kind>1</kind>
             <string>cost = costs[global.DAMWAY];
+
+if image_xscale&gt;1 &amp;&amp; start_lerp==true
+{
+image_xscale = lerp(image_xscale, 1, .15);
+image_yscale = image_xscale;
+}
+
+if image_xscale&lt;=1.01 &amp;&amp; hovered==true
+{
+start_lerp = false;
+hovered = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>start_lerp = true;
+text = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_xscale = 1.25;
+image_yscale = image_xscale;
+
+hovered = true;
+text = true;
 </string>
           </argument>
         </arguments>
@@ -112,8 +179,30 @@ ini_close();
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Controls);
-draw_set_color(c_black);
-draw_text(x, y+87, "Damway#Cost: " + string(cost) + " Lumber#Join a pyramid#scheme, earn more lumber#with every solution.");
+
+if text == true
+{
+if LUMBER &gt;= cost
+    {
+    description = "Damway#Cost: " + string(cost) + " Lumber#Join a pyramid scheme,#earn more lumber with#every solution."
+    description_height = string_height(description);
+    description_width = string_width(description);
+    draw_set_color(c_white);
+    draw_roundrect(view_xview+(view_wview/2)-30-((description_width/2)+5), view_yview+(view_hview/2)+20-((description_height/2)+5), view_xview+(view_wview/2)-30+(description_width/2)+5, view_yview+(view_hview/2)+20+(description_height/2)+5, 0);
+    draw_set_color(c_black)
+    draw_text(view_xview+(view_wview/2)-30, view_yview+(view_hview/2)+20, description);
+    }
+else
+    {
+    description = "Damway#Cost: " + string(cost) + " Lumber#You don't have enough to#buy it yet."
+    description_height = string_height(description);
+    description_width = string_width(description);
+    draw_set_color(c_white);
+    draw_roundrect(view_xview+(view_wview/2)-30-((description_width/2)+5), view_yview+(view_hview/2)+20-((description_height/2)+5), view_xview+(view_wview/2)-30+(description_width/2)+5, view_yview+(view_hview/2)+20+(description_height/2)+5, 0);
+    draw_set_color(c_black);
+    draw_text(view_xview+(view_wview/2-30), view_yview+(view_hview/2)+20, description);
+    }
+}
 
 draw_set_font(f_Music);
 draw_text(x+40, y+8, "x" + string(global.DAMWAY));

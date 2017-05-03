@@ -174,7 +174,7 @@ if (ds_list_size(CLICKED_OBJECTS) &gt; 1)
     }
 }
 
-if o_Explanation.paragraph=="" &amp;&amp; landed_on==false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
+if (o_Explanation.paragraph=="" || COMPLETED&gt;=global.LEVEL) &amp;&amp; landed_on==false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
 {
     if global.FIRST == 0
     {
@@ -223,6 +223,7 @@ if o_Explanation.paragraph=="" &amp;&amp; landed_on==false &amp;&amp; on_top==tr
             <kind>1</kind>
             <string>if shrink == false
 {
+draw_set_color(c_black);
 draw_set_alpha(.5);
 draw_ellipse(x-40, y-20, x+40, y+40, 0);
 draw_set_alpha(1);

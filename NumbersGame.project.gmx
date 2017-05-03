@@ -86,6 +86,7 @@
   <backgrounds name="background">
     <background>background\b_Green</background>
     <background>background\b_Levels</background>
+    <background>background\b_GeneralStore</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">

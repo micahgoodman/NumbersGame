@@ -85,8 +85,10 @@ start_lerp = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>start_lerp = true;
-
+            <string>if COMPLETED &gt; 0
+{
+start_lerp = true;
+}
 /*global.LEVEL = "addition2";
 room_goto(r_Field);
 instance_create((view_xview+view_wview)/2, (view_yview+view_hview)/4, o_InstructionText);*/
@@ -112,10 +114,13 @@ instance_create((view_xview+view_wview)/2, (view_yview+view_hview)/4, o_Instruct
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = .75;
+            <string>if COMPLETED &gt; 0
+{
+image_xscale = .75;
 image_yscale = image_xscale;
 
 clicked = true;
+}
 </string>
           </argument>
         </arguments>
@@ -143,9 +148,9 @@ clicked = true;
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Play);
-draw_set_color(c_olive);
-draw_text(x+1, y+1, "2");
 draw_set_color(c_black);
+draw_text(x+2, y+2, "2");
+draw_set_color(c_white);
 draw_text(x, y, "2");
 
 //draw_text(x-115, y, "Difficulty 2:");

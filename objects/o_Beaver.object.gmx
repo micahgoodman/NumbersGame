@@ -251,7 +251,7 @@ falling = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0;
+            <string>//speed = 0;
 </string>
           </argument>
         </arguments>
@@ -274,7 +274,7 @@ falling = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 0;
+            <string>//speed = 0;
 </string>
           </argument>
         </arguments>

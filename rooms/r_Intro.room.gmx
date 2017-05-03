@@ -15,7 +15,7 @@
 globalvar COMPLETED;
 
 ini_open("info.ini");
-COMPLETED = ini_read_real("Completed", "0", 0);
+COMPLETED = ini_write_real("Completed", "0", 1);
 ini_close();
 
 if (COMPLETED &gt; 0) room_goto(r_Title);</code>

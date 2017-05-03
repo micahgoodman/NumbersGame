@@ -96,7 +96,7 @@ if countdown&lt;=0
 rounded_time = 0;
 }
 
-if countdown&lt;=0 &amp;&amp; instance_exists(o_GameOver)==false
+if countdown&lt;=0 &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats)
 {
 switch_room = true;
 instance_create(view_xview+(view_wview/2), view_yview+(view_hview/3), o_GameOver);

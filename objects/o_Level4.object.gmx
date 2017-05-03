@@ -85,8 +85,10 @@ start_lerp = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>start_lerp = true;
-
+            <string>if COMPLETED &gt; 0
+{
+start_lerp = true;
+}
 /*global.LEVEL = "subtraction2";
 room_goto(r_Field);*/
 </string>
@@ -111,10 +113,13 @@ room_goto(r_Field);*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = .75;
+            <string>if COMPLETED &gt; 0
+{
+image_xscale = .75;
 image_yscale = image_xscale;
 
 clicked = true;
+}
 </string>
           </argument>
         </arguments>
@@ -142,9 +147,9 @@ clicked = true;
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Play);
-draw_set_color(c_olive);
-draw_text(x+1, y+1, "4");
 draw_set_color(c_black);
+draw_text(x+2, y+2, "4");
+draw_set_color(c_white);
 draw_text(x, y, "4");
 
 //draw_text(x-115, y, "Difficulty 1:");

@@ -100,7 +100,15 @@ emitter1 = part_emitter_create(system1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if shrink == true
+            <string>if speed!=global.PER_SECOND*global.SPD || speed!=global.PER_SECOND*(global.SPD+50) || global.PER_SECOND*(global.SPD-50)
+{
+//x = 320;
+if (y == view_yview+(view_hview*(7/12))) speed = global.PER_SECOND * global.SPD;
+else if (y == view_yview+(view_hview*(9/12))) speed = global.PER_SECOND * (global.SPD+50);
+else if (y == view_yview+(view_hview*(11/12))) speed = global.PER_SECOND * (global.SPD-50);
+}
+
+if shrink == true
 {
 image_xscale -= .1;
 image_yscale = image_xscale;
@@ -129,7 +137,6 @@ instance_destroy();
 if y &lt;= NUM_Y
 {
 depth = -y;
-
 speed = 0;
 direction = 90;
 }
@@ -174,7 +181,7 @@ if (ds_list_size(CLICKED_OBJECTS) &gt; 1)
     }
 }
 
-if o_Explanation.paragraph=="" &amp;&amp; landed_on == false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
+if (o_Explanation.paragraph=="" || COMPLETED&gt;=global.LEVEL) &amp;&amp; landed_on == false &amp;&amp; on_top==true &amp;&amp; !instance_exists(o_GameOver) &amp;&amp; !instance_exists(o_Stats) &amp;&amp; !instance_exists(o_PopUp)
 {
     if global.FIRST == 0
     {
@@ -223,6 +230,7 @@ if o_Explanation.paragraph=="" &amp;&amp; landed_on == false &amp;&amp; on_top==
             <kind>1</kind>
             <string>if shrink == false
 {
+draw_set_color(c_black);
 draw_set_alpha(.5);
 draw_ellipse(x-76, y+2, x+76, y+69, 0);
 draw_set_alpha(1);

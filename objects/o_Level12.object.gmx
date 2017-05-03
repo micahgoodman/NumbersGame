@@ -142,9 +142,9 @@ clicked = true;
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Play);
-draw_set_color(c_olive);
-draw_text(x+1, y+1, "12");
 draw_set_color(c_black);
+draw_text(x+2, y+2, "12");
+draw_set_color(c_white);
 draw_text(x, y, "12");
 
 //draw_text(x-115, y, "Difficulty 1:");

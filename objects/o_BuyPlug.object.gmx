@@ -26,6 +26,93 @@
           <argument>
             <kind>1</kind>
             <string>cost = 50;
+hovered = false;
+start_lerp = false;
+text = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if image_xscale&gt;1 &amp;&amp; start_lerp==true
+{
+image_xscale = lerp(image_xscale, 1, .15);
+image_yscale = image_xscale;
+}
+
+if image_xscale&lt;=1.01 &amp;&amp; hovered==true
+{
+start_lerp = false;
+hovered = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>start_lerp = true;
+text = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_xscale = 1.25;
+image_yscale = image_xscale;
+
+hovered = true;
+text = true;
 </string>
           </argument>
         </arguments>
@@ -85,9 +172,29 @@ ini_close();
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(f_Controls);
-draw_set_color(c_black);
-draw_text(x, y+65, "Drain Plug#Cost: " + string(cost) + " Lumber#Get rid of a#whirlpool.");
-
+if text == true
+{
+if LUMBER &gt;= cost
+    {
+    description = "Drain Plug#Cost: " + string(cost) + " Lumber#Get rid of a whirlpool."
+    description_height = string_height(description);
+    description_width = string_width(description);
+    draw_set_color(c_white);
+    draw_roundrect(view_xview+(view_wview/2)-30-((description_width/2)+5), view_yview+(view_hview/2)+20-((description_height/2)+5), view_xview+(view_wview/2)-30+(description_width/2)+5, view_yview+(view_hview/2)+20+(description_height/2)+5, 0);
+    draw_set_color(c_black)
+    draw_text(view_xview+(view_wview/2)-30, view_yview+(view_hview/2)+20, description);
+    }
+else
+    {
+    description = "Drain Plug#Cost: " + string(cost) + " Lumber#You don't have enough to#buy it yet."
+    description_height = string_height(description);
+    description_width = string_width(description);
+    draw_set_color(c_white);
+    draw_roundrect(view_xview+(view_wview/2)-30-((description_width/2)+5), view_yview+(view_hview/2)+20-((description_height/2)+5), view_xview+(view_wview/2)-30+(description_width/2)+5, view_yview+(view_hview/2)+20+(description_height/2)+5, 0);
+    draw_set_color(c_black);
+    draw_text(view_xview+(view_wview/2)-30, view_yview+(view_hview/2)+20, description);
+    }
+}
 draw_set_font(f_Music);
 draw_text(x+33, y+5, "x" + string(global.PLUGS));
 </string>
