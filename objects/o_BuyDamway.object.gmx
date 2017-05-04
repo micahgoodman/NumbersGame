@@ -34,6 +34,11 @@ cost = costs[global.DAMWAY];
 hovered = false;
 start_lerp = false;
 text = false;
+
+if LUMBER &lt; cost
+{
+sprite_index = sp_DamwayHidden;
+}
 </string>
           </argument>
         </arguments>
@@ -68,6 +73,11 @@ if image_xscale&lt;=1.01 &amp;&amp; hovered==true
 {
 start_lerp = false;
 hovered = false;
+}
+
+if LUMBER &lt; cost
+{
+sprite_index = sp_DamwayHidden;
 }
 </string>
           </argument>
@@ -146,6 +156,7 @@ text = true;
 {
 LUMBER -= cost;
 global.DAMWAY += 1;
+audio_play_sound(so_Purchase, 1, 0);
 }
 
 ini_open("info.ini");
@@ -194,7 +205,7 @@ if LUMBER &gt;= cost
     }
 else
     {
-    description = "Damway#Cost: " + string(cost) + " Lumber#You don't have enough to#buy it yet."
+    description = "Damway#Cost: " + string(cost) + " Lumber#You don't have enough#to buy it."
     description_height = string_height(description);
     description_width = string_width(description);
     draw_set_color(c_white);

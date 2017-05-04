@@ -30,6 +30,25 @@ instance_create(x+155, y+75, o_GoToLevels);
 
 with (o_GameOver) instance_destroy();
 
+if global.LEVEL &lt; 13
+{
+if (score &gt;= 1500) medal = "gold";
+else if (score &gt;=1000) medal = "silver";
+else if (score &gt;=700) medal = "bronze";
+else medal = "none";
+}
+else
+{
+if (score &gt;= 3500) medal = "gold";
+else if (score &gt;=2500) medal = "silver";
+else if (score &gt;=1800) medal = "bronze";
+else medal = "none";
+}
+
+if medal != "none"
+{
+instance_create(x-3, y+75, o_NextLevel);
+
 if (global.LEVEL == 1) COMPLETED = 1;
 if (global.LEVEL == 2) COMPLETED = 2;
 if (global.LEVEL == 3) COMPLETED = 3;
@@ -43,21 +62,40 @@ if (global.LEVEL == 10) COMPLETED = 10;
 if (global.LEVEL == 11) COMPLETED = 11;
 if (global.LEVEL == 12) COMPLETED = 12;
 if (global.LEVEL == 13) COMPLETED = 13;
+}
 
 ini_open("info.ini");
 ini_write_real("Completed", "0", COMPLETED);
 ini_close();
 
-
-if (score &gt;= 1500) medal = "gold";
-else if (score &gt;=1000) medal = "silver";
-else if (score &gt;=700) medal = "bronze";
-else medal = "none";
-
-if medal != "none"
+if global.LEVEL==13 &amp;&amp; medal=="gold"
 {
-instance_create(x-3, y+75, o_NextLevel);
+alarm[0] = room_speed*2;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.LEVEL = 14;
+room_goto(r_Won);
 </string>
           </argument>
         </arguments>

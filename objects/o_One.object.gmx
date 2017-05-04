@@ -32,14 +32,20 @@ first_lerp = true;
 
 depth = -y;
 
+if id == GLOWING
+{
+sprite_index = sp_OneNeeded;
+GLOW = false;
+}
+
 shrink = false;
 used = false;
 landed_on = false;
 collided = false;
 
-if y == view_yview+(view_hview*(7/12)) speed = global.PER_SECOND * global.SPD;
-else if y == view_yview+(view_hview*(9/12)) speed = global.PER_SECOND * (global.SPD+50);
-else if y == view_yview+(view_hview*(11/12)) speed = global.PER_SECOND * (global.SPD-50);
+if y == view_yview+(view_hview*(7/12)) hspeed = global.PER_SECOND * global.SPD;
+else if y == view_yview+(view_hview*(9/12)) hspeed = global.PER_SECOND * (global.SPD+50);
+else if y == view_yview+(view_hview*(11/12)) hspeed = global.PER_SECOND * (global.SPD-50);
 //speed = global.PER_SECOND * (global.SPD+random_range(-50, 50));
 direction = 180;
 
@@ -111,14 +117,21 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if start_lerp == true
+            <string>if id == GLOWING
+{
+//show_debug_message("instance: " + string(id));
+sprite_index = sp_Tree;
+//GLOW = false;
+}
+
+if start_lerp == true
 {
 if first_lerp == true
     {
-    speed = global.PER_SECOND*(global.SPD+200);
+    speed = global.PER_SECOND*(300+(150*global.COFFEE));
     first_lerp = false;
     }
-speed = lerp(speed+150*global.COFFEE, 0, .007);
+speed = lerp(speed, 0, .007);
 }
 
 if shrink == true
@@ -218,7 +231,7 @@ if (o_Explanation.paragraph=="" || COMPLETED&gt;=global.LEVEL) &amp;&amp; landed
     direction = point_direction(x, y, NUM_X1, NUM_Y);
     global.FIRST = 1;
     used = true;
-    FIRST_NUM = self;
+    FIRST_NUM = id;
     }
     else if global.SECOND==0 &amp;&amp; used==false
     {
@@ -231,7 +244,7 @@ if (o_Explanation.paragraph=="" || COMPLETED&gt;=global.LEVEL) &amp;&amp; landed
     direction = point_direction(x, y, NUM_X2, NUM_Y);
     global.SECOND = 1;
     used = true;
-    SECOND_NUM = self;
+    SECOND_NUM = id;
     }
 }
 </string>

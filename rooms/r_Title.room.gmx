@@ -19,12 +19,14 @@ globalvar SECOND_NUM; SECOND_NUM = noone;
 
 globalvar LUMBER;
 globalvar HIGH_SCORE;
+globalvar COMPLETED;
 
 globalvar NUM_Y; NUM_Y = view_yview+(view_hview/2)-30;
 globalvar NUM_X1; NUM_X1 = view_xview+(view_wview/2)-87;
 globalvar NUM_X2; NUM_X2 = view_xview+(view_wview/2)+87;
 
 ini_open("info.ini");
+COMPLETED = ini_read_real("Completed", "0", 0);
 global.PLUGS = ini_read_real("Plugs", "0", 0);
 global.HINTS = ini_read_real("Hints", "0", 0);
 global.COFFEE = ini_read_real("Coffee", "0", 0);
@@ -32,7 +34,16 @@ global.DAMWAY = ini_read_real("Damway", "0", 0);
 //score = ini_read_real("Score", "0", 0);
 HIGH_SCORE = ini_read_real("HighScore", "0", 0);
 LUMBER = ini_read_real("Lumber", "0", 0);
-ini_close();</code>
+ini_close();
+
+COMPLETED=2;
+if COMPLETED==0
+{
+room_goto(r_Intro);
+global.LEVEL = 0
+}
+
+//audio_play_sound(so_Soundtrack1, 1, 0);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>0</clearDisplayBuffer>

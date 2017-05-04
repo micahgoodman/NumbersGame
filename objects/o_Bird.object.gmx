@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>clicked = 0;
+            <string>//audio_play_sound(so_BirdIn, 1, 0);
+
+clicked = 0;
 landed = false;
+sound_played = false;
 
 speed = global.PER_SECOND * 500;
 
@@ -109,7 +112,23 @@ shooed = true;
 landed = false;
 direction = shooed_direction;
 speed = global.PER_SECOND * 600;
+if sound_played==false
+{
+audio_play_sound(so_BirdOut, 1, 0);
+sound_played = true;
 }
+}
+
+/*if landed_object != o_NumberSpawner
+{
+if landed_object.shrink==true
+{
+shooed = true;
+landed = false;
+direction = shooed_direction;
+speed = global.PER_SECOND * 600;
+}
+}*/
 </string>
           </argument>
         </arguments>
@@ -164,6 +183,36 @@ landed_object = other;
 
 part_emitter_region(system1,emitter1,x-20,x-20,y-10,y-10,ps_shape_ellipse,1);
 part_emitter_burst(system1, emitter1, particle1, 5);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if landed == true
+{
+draw_set_color(c_black);
+draw_set_alpha(.5);
+draw_ellipse(x-20, y+5, x+20, y+20, 0);
+draw_set_alpha(1);
+}
+draw_self();
 </string>
           </argument>
         </arguments>

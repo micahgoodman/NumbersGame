@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1000000</depth>
+  <depth>10000000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -28,21 +28,25 @@
             <string>if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9 || global.LEVEL==13
 {
 sprite_index = sp_Addition;
+SIGN = "add";
 }
 
 if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10
 {
 sprite_index = sp_Subtraction;
+SIGN = "subtract";
 }
 
 if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11
 {
 sprite_index = sp_Multiplication;
+SIGN = "multiply";
 }
 
 if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
 {
 sprite_index = sp_Division;
+SIGN = "divide";
 }
 
 image_xscale = .6;
@@ -80,6 +84,10 @@ signs[3] = sp_Division;
           <argument>
             <kind>1</kind>
             <string>sprite_index = signs[random(4)];
+if (sprite_index == signs[0]) SIGN = "add";
+if (sprite_index == signs[1]) SIGN = "subtract";
+if (sprite_index == signs[2]) SIGN = "multiply";
+if (sprite_index == signs[3]) SIGN = "divide";
 
 alarm[0] = room_speed*random_range(5, 8);
 </string>
@@ -104,11 +112,16 @@ alarm[0] = room_speed*random_range(5, 8);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>draw_set_color(c_black);
+draw_set_alpha(.5);
+draw_ellipse(x-30, y+20, x+30, y+40, 0);
+draw_set_alpha(1);
+
+draw_self();
 
 draw_set_color(c_black);
-draw_rectangle(x-120, y+24, x-55, y+30, 0);
-draw_rectangle(x+55, y+24, x+120, y+30, 0);
+draw_rectangle(x-120, y+31, x-55, y+37, 0);
+draw_rectangle(x+55, y+31, x+120, y+37, 0);
 </string>
           </argument>
         </arguments>

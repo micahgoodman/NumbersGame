@@ -36,6 +36,10 @@ ini_write_real("Lumber", "0", LUMBER);
 ini_close();
 
 alarm[0] = room_speed*1.5;
+
+audio_pause_sound(so_Soundtrack1);
+if (audio_is_playing(so_LevelEnd)) audio_resume_sound(so_LevelEnd);
+else audio_play_sound(so_LevelEnd, 1, 0);
 </string>
           </argument>
         </arguments>

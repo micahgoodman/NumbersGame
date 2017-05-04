@@ -27,6 +27,11 @@
             <kind>1</kind>
             <string>clicked = false;
 start_lerp = false;
+
+if COMPLETED &lt; 3
+{
+sprite_index = sp_Hidden4;
+}
 </string>
           </argument>
         </arguments>
@@ -85,7 +90,7 @@ start_lerp = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if COMPLETED &gt; 0
+            <string>if COMPLETED &gt; 2
 {
 start_lerp = true;
 }
@@ -113,7 +118,7 @@ room_goto(r_Field);*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if COMPLETED &gt; 0
+            <string>if COMPLETED &gt; 2
 {
 image_xscale = .75;
 image_yscale = image_xscale;
@@ -149,7 +154,8 @@ draw_set_valign(fa_middle);
 draw_set_font(f_Play);
 draw_set_color(c_black);
 draw_text(x+2, y+2, "4");
-draw_set_color(c_white);
+if (COMPLETED &gt; 2) draw_set_color(c_white);
+else draw_set_color(c_gray);
 draw_text(x, y, "4");
 
 //draw_text(x-115, y, "Difficulty 1:");

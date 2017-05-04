@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_self();
+            <string>draw_set_color(c_black);
+draw_set_alpha(.5);
+if (string_length(string(global.TARGET)) == 1) draw_ellipse(x-35, y+60, x+35, y+90, 0);
+else if (string_length(string(global.TARGET)) == 2) draw_ellipse(x-70, y+60, x+70, y+90, 0);
+else draw_ellipse(x-105, y+60, x+105, y+90, 0);
+draw_set_alpha(1);
 
 draw_set_color(make_color_rgb(69, 49, 22));
 draw_set_font(f_Target);

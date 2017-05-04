@@ -68,8 +68,76 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(715, 440, numbers[random(9)]);
+            <string>if GET_NEEDED == true
+{
+GLOW = true;
+if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9 || SIGN=="add"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 440, numbers[random(9)]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET-global.FIRST;
+        GLOWING = instance_create(715, 440, numbers[needed-1]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10 || SIGN=="subtract"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 440, numbers[random(9)]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET+global.FIRST;
+        instance_create(715, 440, numbers[needed-1]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11 || SIGN=="multiply"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 440, numbers[random(9)]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET/global.FIRST;
+        instance_create(715, 440, numbers[needed-1]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12 || SIGN=="divide"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 440, numbers[random(9)]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET*global.FIRST;
+        instance_create(715, 440, numbers[needed-1]);
+        alarm[3] = room_speed/random_range(.5, .8);
+        GET_NEEDED = false;
+        }
+    }
+}
+
+else
+{
+instance_create(715, 440, numbers[random(9)]);
 alarm[3] = room_speed/random_range(.5, .8);
+}
 </string>
           </argument>
         </arguments>
@@ -92,8 +160,78 @@ alarm[3] = room_speed/random_range(.5, .8);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(715, 360, numbers[random(9)]);
+            <string>if GET_NEEDED == true
+{
+GLOW = true;
+if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9 || SIGN=="add"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 360, numbers[random(9)]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET-global.FIRST;
+        GLOWING = instance_create(715, 360, numbers[needed-1]);
+        GLOWING.sprite_index = sp_Tree;
+        show_debug_message("spawner:" + string(GLOWING));
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10 || SIGN=="subtract"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 360, numbers[random(9)]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET+global.FIRST;
+        instance_create(715, 360, numbers[needed-1]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11 || SIGN=="multiply"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 360, numbers[random(9)]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET/global.FIRST;
+        instance_create(715, 360, numbers[needed-1]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12 || SIGN=="divide"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 360, numbers[random(9)]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET*global.FIRST;
+        instance_create(715, 360, numbers[needed-1]);
+        alarm[2] = room_speed/random_range(.75, 1.5);
+        GET_NEEDED = false;
+        }
+    }
+}
+
+else
+{
+instance_create(715, 360, numbers[random(9)]);
 alarm[2] = room_speed/random_range(.75, 1.5);
+}
 </string>
           </argument>
         </arguments>
@@ -116,8 +254,79 @@ alarm[2] = room_speed/random_range(.75, 1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(600, 280, numbers[random(9)]);
+            <string>if GET_NEEDED == true
+{
+//GLOW = true;
+if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9 || SIGN=="add"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 280, numbers[random(9)]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET-global.FIRST;
+        GLOWING = instance_create(715, 280, numbers[needed-1]);
+        GLOWING.sprite_index = sp_Tree;
+        show_debug_message("spawner:" + string(GLOWING));
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10 || SIGN=="subtract"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 280, numbers[random(9)]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET+global.FIRST;
+        instance_create(715, 280, numbers[needed-1]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11 || SIGN=="multiply"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 280, numbers[random(9)]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET/global.FIRST;
+        instance_create(715, 280, numbers[needed-1]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        GET_NEEDED = false;
+        }
+    }
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12 || SIGN=="divide"
+    {
+    if global.FIRST == 0
+        {
+        instance_create(715, 280, numbers[random(9)]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        }
+    if global.FIRST != 0
+        {
+        needed = global.TARGET*global.FIRST;
+        instance_create(715, 280, numbers[needed-1]);
+        alarm[1] = room_speed/random_range(.75, 1.15);
+        GET_NEEDED = false;
+        }
+    }
+}
+
+else
+{
+instance_create(715, 280, numbers[random(9)]);
 alarm[1] = room_speed/random_range(.75, 1.15);
+}
+
 </string>
           </argument>
         </arguments>
@@ -175,6 +384,10 @@ else if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
 {
 global.TARGET = round(random_range(1, 9.49))/round(random_range(1, 9.49));
 //global.TARGET = round(first_adder) / round(second_adder);
+}
+else if global.LEVEL==13
+{
+global.TARGET = round(random_range(1, 9.49))
 }
 
 var i;

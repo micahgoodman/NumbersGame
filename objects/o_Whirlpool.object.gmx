@@ -29,6 +29,8 @@
 
 image_xscale = .05;
 image_yscale = image_xscale;
+
+audio_play_sound(so_Whirlpool, 1, 0);
 </string>
           </argument>
         </arguments>
@@ -52,6 +54,7 @@ image_yscale = image_xscale;
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
+audio_pause_sound(so_Whirlpool);
 </string>
           </argument>
         </arguments>

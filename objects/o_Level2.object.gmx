@@ -27,6 +27,11 @@
             <kind>1</kind>
             <string>clicked = false;
 start_lerp = false;
+
+if COMPLETED &lt; 1
+{
+sprite_index = sp_Hidden2;
+}
 </string>
           </argument>
         </arguments>
@@ -150,7 +155,8 @@ draw_set_valign(fa_middle);
 draw_set_font(f_Play);
 draw_set_color(c_black);
 draw_text(x+2, y+2, "2");
-draw_set_color(c_white);
+if (COMPLETED &gt; 0) draw_set_color(c_white);
+else draw_set_color(c_gray);
 draw_text(x, y, "2");
 
 //draw_text(x-115, y, "Difficulty 2:");

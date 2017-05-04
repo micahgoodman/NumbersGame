@@ -238,9 +238,24 @@ part_emitter_burst(system1, emitter1, particle1, 75);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(o_LadyBeaver)
+            <string>if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10
 {
-if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9
+SIGN = "subtract";
+}
+
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11
+{
+SIGN = "multiply";
+}
+
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
+{
+SIGN = "divide";
+}
+
+if !instance_exists(o_LadyBeaver)
+{
+if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9 || SIGN=="add"
 {
     if global.FIRST+global.SECOND==global.TARGET &amp;&amp; global.SECOND!=0
     {
@@ -291,7 +306,7 @@ if global.LEVEL==1 || global.LEVEL==2 || global.LEVEL==9
 
 
 
-if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10
+if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10 || SIGN=="subtract"
 {
     if global.FIRST!=0 &amp;&amp; global.SECOND!=0 &amp;&amp; global.FIRST-global.SECOND==global.TARGET
     {
@@ -339,7 +354,7 @@ if global.LEVEL==3 || global.LEVEL==4 || global.LEVEL==10
 
 
 
-if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11
+if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11 || SIGN=="multiply"
 {
     if global.FIRST*global.SECOND == global.TARGET
     {
@@ -387,7 +402,7 @@ if global.LEVEL==5 || global.LEVEL==6 || global.LEVEL==11
 
 
 
-if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12
+if global.LEVEL==7 || global.LEVEL==8 || global.LEVEL==12 || SIGN=="divide"
 {
     if global.FIRST/global.SECOND == global.TARGET
     {

@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>on_top = true;
+start_lerp = false;
+first_lerp = true;
 
 depth = -y;
 
@@ -34,9 +36,9 @@ collided = false;
 used = false;
 landed_on = false;
 
-if (y == view_yview+(view_hview*(7/12))) speed = global.PER_SECOND * global.SPD;
-else if (y == view_yview+(view_hview*(9/12))) speed = global.PER_SECOND * (global.SPD+50);
-else if (y == view_yview+(view_hview*(11/12))) speed = global.PER_SECOND * (global.SPD-50);
+if (y == view_yview+(view_hview*(7/12))) hspeed = global.PER_SECOND * global.SPD;
+else if (y == view_yview+(view_hview*(9/12))) hspeed = global.PER_SECOND * (global.SPD+50);
+else if (y == view_yview+(view_hview*(11/12))) hspeed = global.PER_SECOND * (global.SPD-50);
 
 //speed = global.PER_SECOND * (global.SPD+random_range(-50, 50));
 direction = 180;
@@ -100,13 +102,23 @@ emitter1 = part_emitter_create(system1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if speed!=global.PER_SECOND*global.SPD || speed!=global.PER_SECOND*(global.SPD+50) || global.PER_SECOND*(global.SPD-50)
+            <string>if start_lerp == true
+{
+if first_lerp == true
+    {
+    speed = global.PER_SECOND*(300+(150*global.COFFEE));
+    first_lerp = false;
+    }
+speed = lerp(speed, 0, .007);
+}
+
+/*if speed!=global.PER_SECOND*global.SPD || speed!=global.PER_SECOND*(global.SPD+50) || global.PER_SECOND*(global.SPD-50)
 {
 //x = 320;
 if (y == view_yview+(view_hview*(7/12))) speed = global.PER_SECOND * global.SPD;
 else if (y == view_yview+(view_hview*(9/12))) speed = global.PER_SECOND * (global.SPD+50);
 else if (y == view_yview+(view_hview*(11/12))) speed = global.PER_SECOND * (global.SPD-50);
-}
+}*/
 
 if shrink == true
 {
@@ -189,22 +201,24 @@ if (o_Explanation.paragraph=="" || COMPLETED&gt;=global.LEVEL) &amp;&amp; landed
     //depth = 500;
     audio_play_sound(so_Clicked, 1, 0);
     //sprite_index = sp_FiveSelected;
+    start_lerp = true;
     speed = global.PER_SECOND*(300+(150*global.COFFEE));
     direction = point_direction(x, y, NUM_X1, NUM_Y);
     global.FIRST = 5;
     used = true;
-    FIRST_NUM = self;
+    FIRST_NUM = id;
     }
     else if global.SECOND==0 &amp;&amp; used==false
     {
     //depth = 500;
     audio_play_sound(so_Clicked, 1, 0);
     //sprite_index = sp_FiveSelected;
+    start_lerp = true;
     speed = global.PER_SECOND*(300+(150*global.COFFEE));
     direction = point_direction(x, y, NUM_X2, NUM_Y);
     global.SECOND = 5;
     used = true;
-    SECOND_NUM = self;
+    SECOND_NUM = id;
     }
 }
 </string>
@@ -257,10 +271,10 @@ if shrink == false
 {
 //draw_set_color(c_black);
 //draw_text(x+3, y+2, "5");
-draw_set_alpha(.8);
+//draw_set_alpha(.8);
 draw_set_color(c_black);
 draw_text(x, y, "5");
-draw_set_alpha(1);
+//draw_set_alpha(1);
 }
 </string>
           </argument>

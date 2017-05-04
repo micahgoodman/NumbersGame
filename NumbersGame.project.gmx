@@ -16,6 +16,16 @@
     <sound>sound\so_Whirlpool</sound>
     <sound>sound\so_BirdIn</sound>
     <sound>sound\so_BirdOut</sound>
+    <sound>sound\so_Need</sound>
+    <sound>sound\so_Splash</sound>
+    <sound>sound\so_TimeMachine</sound>
+    <sound>sound\so_Purchase</sound>
+    <sound>sound\so_BeatLevel</sound>
+    <sound>sound\so_FailedLevel</sound>
+    <sound>sound\so_LadyBeaver</sound>
+    <sound>sound\so_Won</sound>
+    <sound>sound\so_Intro</sound>
+    <sound>sound\so_LevelEnd</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_Number</sprite>
@@ -24,11 +34,15 @@
     <sprite>sprites\sp_Beaver</sprite>
     <sprite>sprites\sp_BeaverBlink</sprite>
     <sprite>sprites\sp_LadyBeaver</sprite>
+    <sprite>sprites\sp_LadyBlink</sprite>
     <sprite>sprites\sp_One</sprite>
+    <sprite>sprites\sp_OneNeeded</sprite>
     <sprite>sprites\sp_OneSelected</sprite>
     <sprite>sprites\sp_Two</sprite>
+    <sprite>sprites\sp_TwoNeeded</sprite>
     <sprite>sprites\sp_TwoSelected</sprite>
     <sprite>sprites\sp_Three</sprite>
+    <sprite>sprites\sp_ThreeNeeded</sprite>
     <sprite>sprites\sp_ThreeSelected</sprite>
     <sprite>sprites\sp_Four</sprite>
     <sprite>sprites\sp_FourSelected</sprite>
@@ -57,13 +71,17 @@
     <sprite>sprites\sp_Whirlpool</sprite>
     <sprite>sprites\sp_Bird</sprite>
     <sprite>sprites\sp_SpeedUp</sprite>
-    <sprite>sprites\sp_SlowDown</sprite>
+    <sprite>sprites\sp_Needed</sprite>
     <sprite>sprites\sp_Arrow</sprite>
     <sprite>sprites\sp_MoreTime</sprite>
     <sprite>sprites\sp_Plug</sprite>
+    <sprite>sprites\sp_PlugHidden</sprite>
     <sprite>sprites\sp_Hint</sprite>
+    <sprite>sprites\sp_HintHidden</sprite>
     <sprite>sprites\sp_Coffee</sprite>
+    <sprite>sprites\sp_CoffeeHidden</sprite>
     <sprite>sprites\sp_Damway</sprite>
+    <sprite>sprites\sp_DamwayHidden</sprite>
     <sprite>sprites\sp_StoreBox</sprite>
     <sprite>sprites\sp_LevelsButton</sprite>
     <sprite>sprites\sp_Shadow</sprite>
@@ -71,17 +89,29 @@
     <sprite>sprites\sp_TimeMachine</sprite>
     <sprite>sprites\sp_Level1</sprite>
     <sprite>sprites\sp_Level2</sprite>
+    <sprite>sprites\sp_Hidden2</sprite>
     <sprite>sprites\sp_Level3</sprite>
+    <sprite>sprites\sp_Hidden3</sprite>
     <sprite>sprites\sp_Level4</sprite>
+    <sprite>sprites\sp_Hidden4</sprite>
     <sprite>sprites\sp_Level5</sprite>
+    <sprite>sprites\sp_Hidden5</sprite>
     <sprite>sprites\sp_Level6</sprite>
+    <sprite>sprites\sp_Hidden6</sprite>
     <sprite>sprites\sp_Level7</sprite>
+    <sprite>sprites\sp_Hidden7</sprite>
     <sprite>sprites\sp_Level8</sprite>
+    <sprite>sprites\sp_Hidden8</sprite>
     <sprite>sprites\sp_Level9</sprite>
+    <sprite>sprites\sp_Hidden9</sprite>
     <sprite>sprites\sp_Level10</sprite>
+    <sprite>sprites\sp_Hidden10</sprite>
     <sprite>sprites\sp_Level11</sprite>
+    <sprite>sprites\sp_Hidden11</sprite>
     <sprite>sprites\sp_Level12</sprite>
+    <sprite>sprites\sp_Hidden12</sprite>
     <sprite>sprites\sp_Level13</sprite>
+    <sprite>sprites\sp_Hidden13</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\b_Green</background>
@@ -146,7 +176,7 @@
     <object>objects\o_Bird</object>
     <object>objects\o_ItemSpawner</object>
     <object>objects\o_SpeedUp</object>
-    <object>objects\o_SlowDown</object>
+    <object>objects\o_Needed</object>
     <object>objects\o_Beaver</object>
     <object>objects\o_MoreTime</object>
     <object>objects\o_LadyBeaver</object>
@@ -175,11 +205,13 @@
     <object>objects\o_Explanation</object>
     <object>objects\o_Arrow</object>
     <object>objects\o_Intro</object>
+    <object>objects\o_Won</object>
     <object>objects\o_TimeMachine</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\r_Intro</room>
     <room>rooms\r_Title</room>
+    <room>rooms\r_Intro</room>
+    <room>rooms\r_Won</room>
     <room>rooms\r_Field</room>
     <room>rooms\r_Levels</room>
     <room>rooms\r_GeneralStore</room>

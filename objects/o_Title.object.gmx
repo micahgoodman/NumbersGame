@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(so_Soundtrack1, 1, 1);
+//if (audio_is_paused(so_Soundtrack1)) audio_resume_sound(so_Soundtrack1);
 </string>
           </argument>
         </arguments>

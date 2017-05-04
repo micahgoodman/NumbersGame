@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>explanation[0, 0] = "Where am I?#(press &lt;space&gt;)";
+            <string>show_debug_message(string(global.LEVEL));
+
+explanation[0, 0] = "Where am I?#(press &lt;space&gt;)";
 explanation[0, 1] = "What happened?#(&lt;space&gt;)";
 explanation[0, 2] = "Oh look, there's a time machine,#that's super convenient.";
 explanation[0, 3] = "Maybe it'll help me find some answers.";
@@ -34,12 +36,13 @@ explanation[0, 4] = "";
 explanation[1, 0] = "All this stuff is helping#me remember a little.";
 explanation[1, 1] = "I used to be numberjack...#a really good one!#No one could collect#number lumber like I could."
 explanation[1, 2] = "But ever since I woke up I#can't move very quickly.#You'll have to collect#the logs for me.";
-explanation[1, 3] = "Click two floating piles# that add up to the#target number shown here.";
-explanation[1, 4] = "Your score is always#over here.";
-explanation[1, 5] = "And this is your total lumber,#which you can use at the general store.";
-explanation[1, 6] = "Once you've bought plugs and#hints, you can use them by#clicking on their icon.";
-explanation[1, 7] = "In each of these#tournaments you have a#limited amount of time to#reach a certain score.";
-explanation[1, 8] = "";
+explanation[1, 3] = "Don't get any answers wrong#or else you'll anger#the river.";
+explanation[1, 4] = "Click two floating piles# that add up to the#target number shown here.";
+explanation[1, 5] = "Your score is always#over here.";
+explanation[1, 6] = "And this is your total lumber,#which you can use at the general store.";
+explanation[1, 7] = "Once you've bought plugs and#hints, you can use them by#clicking on their icon.";
+explanation[1, 8] = "In each of these#tournaments you have a#limited amount of time to#reach a certain score.";
+explanation[1, 9] = "";
 
 explanation[2, 0] = "I remember this competition, too.";
 explanation[2, 1] = "It's the one that got me#started donating the logs I#collected to beavers that#couldn't gather their own.";
@@ -49,7 +52,8 @@ explanation[2, 4] = "";
 
 explanation[3, 0] = "Whoa, seems like you need to#subtract the number lumber this#time, I had forgotten about that.";
 explanation[3, 1] = "But on the plus side#there will be another#powerup available.";
-explanation[3, 2] = "";
+explanation[3, 2] = "It's an 'x' that will#immediately create the#number of logs you#in the river (based#on the first number#you chose).";
+explanation[3, 3] = "";
 
 explanation[4, 0] = "Oh no -- it's all starting to#come back to me -- this#tournament is when things#started getting fishy.";
 explanation[4, 1] = "Someone didn't like that I#was donating so much lumber.#They started making the#competitions dangerous#in order to stop me.";
@@ -113,11 +117,22 @@ explanation[13, 8] = "But now I have you.";
 explanation[13, 9] = "Let's win this competition#and show Jerkface once and#for all that his days of#pushing this community#around are over.";
 explanation[13, 10] = "";
 
+explanation[14, 0] = "We did it!";
+explanation[14, 1] = "Jerkface ran out of tricks#and realized his only#choice was to flee.";
+explanation[14, 2] = "Thank you for helping me#save my community.";
+explanation[14, 3] = "I deem you an#official numberjack!";
+explanation[14, 4] = "";
+
 
 if instance_exists(o_Intro)
 {
 depth = -100;
 global.LEVEL = 0;
+}
+
+if global.LEVEL==14
+{
+depth = -100;
 }
 
 start = false;
@@ -169,38 +184,38 @@ if o_Beaver.x &gt;= 400
 
 if COMPLETED == 0
 {
-    if paragraph == explanation[1, 3]
+    if paragraph == explanation[1, 4]
     {
         x = view_xview+(view_wview/5)+5;
         y = view_yview+85;
         instance_create(view_xview+(view_wview/2)-42, y, o_Arrow);
     }
-    if paragraph == explanation[1, 4]
+    if paragraph == explanation[1, 5]
     {
         x = view_xview+(view_wview/2);
         y = view_yview+(view_hview/4);
         o_Arrow.x = view_xview+view_wview-150;
         o_Arrow.y = view_yview+20;
     }
-    if paragraph == explanation[1, 5]
+    if paragraph == explanation[1, 6]
     {   
         x = view_xview+(view_wview/2)+35;
         o_Arrow.x = view_xview+view_wview-205;
         o_Arrow.y = view_yview+53;
     }
-    if paragraph == explanation[1, 6]
+    if paragraph == explanation[1, 7]
     {
         x = view_xview+(view_wview/2);
         o_Arrow.x = view_xview+view_wview-65;
         o_Arrow.y = view_yview+100;
     }
-    if paragraph == explanation[1, 7]
+    if paragraph == explanation[1, 8]
     {
         o_Arrow.image_xscale = -1;
         o_Arrow.x = view_xview+150;
         o_Arrow.y = view_yview+23;
     }
-    if paragraph == explanation[1, 8]
+    if paragraph == explanation[1, 9]
     {
         with o_Arrow instance_destroy();
     }
@@ -210,6 +225,11 @@ if paragraph == explanation[2, 0]
 {
     x = view_xview+(view_wview/2);
     y = view_yview+(view_hview/4);
+}
+
+if paragraph = explanation[14, 3]
+{
+instance_create(320, 32, o_MainButton);
 }
 
 </string>
